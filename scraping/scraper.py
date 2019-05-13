@@ -1,42 +1,75 @@
 from selenium import webdriver
-
+import os
 import time
+import sys
 
-driver=webdriver.Chrome()
+SRC_DIR = '../source_links/'
+DATA_DIR = '../data/'
 
-driver.get('https://www.youtube.com/watch?v=skFOyjFJ4pc')
-time.sleep(15)
+def scrape(folder, file):
+    driver=webdriver.Chrome()
 
-count = 1
+    fd = open(SRC_DIR + folder + file)
+    links = fd.read().splitlines()
+    fd.close()
+    
+    if not os.path.exists(DATA_DIR + folder):
+        os.makedirs(DATA_DIR + folder)
+    fd = open(DATA_DIR + folder + file, "w+")
 
-driver.execute_script('window.scrollTo(0, 250);')
+    for link in links:
+        print("Getting link :", link)
+        driver.get(link)
+        time.sleep(15)
 
-SCROLL_PAUSE_TIME = 5
+        count = 1
+
+        driver.execute_script('window.scrollTo(0, 250);')
+
+        SCROLL_PAUSE_TIME = 5
 
 
-# Get scroll height
-last_height = driver.execute_script("return document.documentElement.scrollHeight")
-print(last_height)
+        # Get scroll height
+        last_height = driver.execute_script("return document.documentElement.scrollHeight")
 
-while count < 10000:
-    #now wait let load the comments
-    time.sleep(SCROLL_PAUSE_TIME)
-    i = str(1000 * count)
-    driver.execute_script('window.scrollTo(0, document.documentElement.scrollHeight);')
-    print(count)
-    count+=1
-    new_height = driver.execute_script("return document.documentElement.scrollHeight")
-    print(new_height)
-    if last_height == new_height:
-        break
-    last_height = new_height    
+        while count < 10000:
+            #now wait let load the comments
+            time.sleep(SCROLL_PAUSE_TIME)
+            i = str(1000 * count)
+            driver.execute_script('window.scrollTo(0, document.documentElement.scrollHeight);')
+            count+=1
+            new_height = driver.execute_script("return document.documentElement.scrollHeight")
+            if last_height == new_height:
+                break
+            last_height = new_height    
 
-count = 0
-fd = open("dump.txt", "w+")
-comment_div=driver.find_element_by_xpath('//*[@id="contents"]')
-comments=comment_div.find_elements_by_xpath('//*[@id="content-text"]')
-for comment in comments:
-    fd.write(comment.text + "\n")
-    count += 1
-fd.close()
-driver.quit()
+        count = 0
+        print('Outputted to :', path+file)
+        comment_div=driver.find_element_by_xpath('//*[@id="contents"]')
+        comments=comment_div.find_elements_by_xpath('//*[@id="content-text"]')
+        for comment in comments:
+            fd.write(comment.text + "\n")
+            count += 1
+        driver.quit()
+    fd.close()
+
+
+if __name__ == '__main__':
+    for i in range(1, len(sys.argv)):
+        folder = sys.argv[i] + '/'
+        path = SRC_DIR + folder
+        filelist = os.listdir(path)
+        try :
+            print('Removing .DS_Store')
+            filelist.remove('.DS_Store')
+        except ValueError:
+            print('No .DS_Store...\n Continuing...')
+        else :
+            print('.DS_Store removed...\n Continuing...')
+        print("In folder :", folder)
+        print(filelist)
+        for file in filelist:
+            print("In file :", file)
+            scrape(folder, file)
+    print("Exiting...")
+
