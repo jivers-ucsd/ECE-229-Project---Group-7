@@ -2,7 +2,9 @@
 Project for ECE 143 SP19, done by Rishabh Sethunathan, Jessica Ivers, Cyrus Shen.
 
 ## Setup
-Selenium webdriver -- To Do
+### Selenium
+Scraping YouTube comments requires us to scroll to the bottom of each video, to load all the comments and the extract them. For this we are using Selenium.<br>
+To install Selenium: <code>pip install selenium</code>. Then download the driver and follow further instructions from <a href="https://selenium-python.readthedocs.io/installation.html">here</a>.
 
 ## Scraping
 Create folders for content types in <code>/source_links</code> and maintain text files for each content creator with links to their videos in them.<br>
