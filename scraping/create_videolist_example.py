@@ -20,19 +20,35 @@ Outputs
 ##imports
 from bs4 import BeautifulSoup as bs
 import requests
+import sys
+import os
+
+SRC_DIR = '../source_links/'
 
 ##body
-content = 'https://www.youtube.com/user/bgfilms/videos'
+def get_links(user):
+    content = 'https://www.youtube.com/user/'+user+'/videos'
+    
+    r = requests.get(content)
+    
+    soup = bs(r.text,'html.parser')
+    
+    vids = soup.findAll('a',attrs={'class':'yt-uix-tile-link'})
+    
+    videolist = []
+    for v in vids:
+        tmp = 'https://www.youtube.com' + v['href']
+        videolist.append(tmp)
 
-r = requests.get(content)
+    return videolist
 
-soup = bs(r.text,'html.parser')
-
-vids = soup.findAll('a',attrs={'class':'yt-uix-tile-link'})
-
-videolist = []
-for v in vids:
-    tmp = 'https://www.youtube.com' + v['href']
-    #videolist.append(tmp+'\n')
-    videolist.append(tmp)
- 
+if __name__ == '__main__':
+    d = sys.argv[1]
+    user = sys.argv[2]
+    links = get_links(user)
+    if not os.path.exists(SRC_DIR + d):
+        os.makedirs(SRC_DIR + d)
+    fd = open(SRC_DIR+d+'/'+user+'.txt', 'w+')
+    fd.write('\n'.join(links))
+    fd.close()
+    

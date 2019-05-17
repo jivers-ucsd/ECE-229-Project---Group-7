@@ -35,7 +35,6 @@ def scrape(folder, file):
         while count < 10000:
             #now wait let load the comments
             time.sleep(SCROLL_PAUSE_TIME)
-            i = str(1000 * count)
             driver.execute_script('window.scrollTo(0, document.documentElement.scrollHeight);')
             count+=1
             new_height = driver.execute_script("return document.documentElement.scrollHeight")
@@ -51,6 +50,7 @@ def scrape(folder, file):
             fd.write(comment.text + "\n")
             count += 1
         driver.quit()
+        print('Comments scraped :', count)
     fd.close()
 
 
