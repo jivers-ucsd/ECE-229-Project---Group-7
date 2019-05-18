@@ -26,8 +26,14 @@ import os
 SRC_DIR = '../source_links/'
 
 ##body
-def get_links(user):
-    content = 'https://www.youtube.com/user/'+user+'/videos'
+def get_links(t, user):
+    
+    if t == 'u':
+        content = 'https://www.youtube.com/user/'+user+'/videos'
+    elif t == 'p':
+        content = 'https://www.youtube.com/playlist?list='+user
+    elif t == 'c':
+        content = 'https://www.youtube.com/channel/'+user+'/videos'
     
     r = requests.get(content)
     
