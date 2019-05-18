@@ -26,7 +26,7 @@ import os
 SRC_DIR = '../source_links/'
 
 ##body
-def get_links(t, user):
+def get_links(user, t):
     
     if t == 'u':
         content = 'https://www.youtube.com/user/'+user+'/videos'
@@ -51,7 +51,8 @@ def get_links(t, user):
 if __name__ == '__main__':
     d = sys.argv[1]
     user = sys.argv[2]
-    links = get_links(user)
+    t = sys.argv[3]
+    links = get_links(user, t)
     if not os.path.exists(SRC_DIR + d):
         os.makedirs(SRC_DIR + d)
     fd = open(SRC_DIR+d+'/'+user+'.txt', 'w+')

@@ -20,19 +20,19 @@ def scrape(folder, file):
     for link in links:
         print("Getting link :", link)
         driver.get(link)
-        time.sleep(15)
+        driver.maximize_window()
+        time.sleep(7)
 
-        count = 1
+        count = 0
 
-        driver.execute_script('window.scrollTo(0, 250);')
-
+        driver.execute_script('window.scrollTo(0, 400);')
         SCROLL_PAUSE_TIME = 5
 
 
         # Get scroll height
         last_height = driver.execute_script("return document.documentElement.scrollHeight")
 
-        while count < 10000:
+        while count < 1000:
             #now wait let load the comments
             time.sleep(SCROLL_PAUSE_TIME)
             driver.execute_script('window.scrollTo(0, document.documentElement.scrollHeight);')
@@ -49,7 +49,7 @@ def scrape(folder, file):
         for comment in comments:
             fd.write(comment.text + "\n")
             count += 1
-        driver.quit()
+        time.sleep(5)
         print('Comments scraped :', count)
     fd.close()
 
