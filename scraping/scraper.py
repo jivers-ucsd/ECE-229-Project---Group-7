@@ -32,7 +32,7 @@ def scrape(folder, file):
         # Get scroll height
         last_height = driver.execute_script("return document.documentElement.scrollHeight")
 
-        while count < 1000:
+        while count < 10000:
             #now wait let load the comments
             time.sleep(SCROLL_PAUSE_TIME)
             driver.execute_script('window.scrollTo(0, document.documentElement.scrollHeight);')

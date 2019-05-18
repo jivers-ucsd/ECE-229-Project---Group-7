@@ -58,4 +58,5 @@ if __name__ == '__main__':
     fd = open(SRC_DIR+d+'/'+user+'.txt', 'w+')
     fd.write('\n'.join(links))
     fd.close()
+    print("Number of links :", len(links))
     
