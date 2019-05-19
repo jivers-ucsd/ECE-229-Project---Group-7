@@ -17,7 +17,11 @@ def scrape(folder, file):
         os.makedirs(DATA_DIR + folder)
     fd = open(DATA_DIR + folder + file, "w+")
 
+    c = 0
     for link in links:
+        if c >= 20 :
+            break
+        c += 1
         print("Getting link :", link)
         driver.get(link)
         driver.maximize_window()
@@ -32,7 +36,7 @@ def scrape(folder, file):
         # Get scroll height
         last_height = driver.execute_script("return document.documentElement.scrollHeight")
 
-        while count < 10000:
+        while count < 200:
             #now wait let load the comments
             time.sleep(SCROLL_PAUSE_TIME)
             driver.execute_script('window.scrollTo(0, document.documentElement.scrollHeight);')
