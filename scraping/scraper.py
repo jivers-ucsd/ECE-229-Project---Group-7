@@ -29,7 +29,7 @@ def scrape(folder, file):
 
         count = 0
 
-        driver.execute_script('window.scrollTo(0, 400);')
+        driver.execute_script('window.scrollTo(0, 500);')
         SCROLL_PAUSE_TIME = 5
 
 
