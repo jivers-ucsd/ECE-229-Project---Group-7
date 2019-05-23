@@ -16,9 +16,10 @@ def sentiment_analysis(text,bank):
             scores which will be turned into a dictionary.
             
     Outputs
-        score(float)
-            Average sentiment for the text file (total sum score/number of words
-            in file).
+        score(tuple - float)
+            Score is the average sentiment for the text file 
+            (total sum score/number of wordsin file) in three parts:
+                (positive score, negative score, combined score)
             
         word_freq(pandas DataFrame)
             Pandas DataFrame mapping words in the text under analysis (index) to
@@ -32,17 +33,32 @@ def sentiment_analysis(text,bank):
     
     #bank
     
-    
-    ##body
-    with open(text,'r',encoding='utf8') as f_data:
-        txt = f_data.readlines()
-        
+    ##make word dictionary - not all keys are a single word!!!
     with open(bank,'r',encoding='utf8') as f_bank:
         word_bank = f_bank.readlines()
         word_bank = word_bank[2:]
         
+    tmp = [tuple(i.split('\t')) for i in word_bank]
+    word_bank = {i[0]:int(i[1]) for i in tmp}
     
+    ##make word data structure
+    #read in file
+    with open(text,'r',encoding='utf8') as f_data:
+        txt = f_data.readlines()
         
+    #make all lower case
     
+    #strip useless word
+    
+    #make data series
+    
+    #convert to data frame
+    
+    #add freq column
+    
+    #add score column from dict if applicable
+    
+    ##score 
     
     ##output assertions
+    return score word_freq
