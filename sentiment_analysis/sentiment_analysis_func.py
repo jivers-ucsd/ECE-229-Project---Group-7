@@ -27,6 +27,9 @@ def sentiment_analysis(text,bank):
     '''
     ##imports
     import pandas as pd
+    import itertools as it
+    import string
+    import re
     
     ##input assertions
     #text
@@ -34,6 +37,7 @@ def sentiment_analysis(text,bank):
     #bank
     
     ##make word dictionary - not all keys are a single word!!!
+    #Do we want to remove the non-singletons?
     with open(bank,'r',encoding='utf8') as f_bank:
         word_bank = f_bank.readlines()
         word_bank = word_bank[2:]
@@ -47,12 +51,21 @@ def sentiment_analysis(text,bank):
         txt = f_data.readlines()
         
     #make all lower case
+    txt = [i.lower() for i in txt]
+    
+    #flatten list and remove punctuation
+    txt = [i for j in txt for i in j]
+    txt = [i.translate(str.maketrans('', '', string.punctuation)) for i in txt]
     
     #strip useless word
     
     #make data series
+    a = pd.Series(txt)
     
     #convert to data frame
+    df = a.groupby(by = a.values).count()
+    df.name = 'count'
+    df = pd.DataFrame(df)
     
     #add freq column
     
