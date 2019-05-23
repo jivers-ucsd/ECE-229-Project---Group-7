@@ -68,10 +68,17 @@ def sentiment_analysis(text,bank):
     df = pd.DataFrame(df)
     
     #add freq column
+    df['freq'] = df['count']/df['count'].sum()
     
     #add score column from dict if applicable
     
+    word_freq = df
+    
     ##score 
+    score_pos   = 1
+    score_neg   = -1
+    score_combo = 0
+    score = (score_pos, score_neg, score_combo)
     
     ##output assertions
-    return score word_freq
+    return score, word_freq
