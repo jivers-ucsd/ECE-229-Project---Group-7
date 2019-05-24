@@ -27,9 +27,7 @@ def sentiment_analysis(text,bank):
     '''
     ##imports
     import pandas as pd
-    import itertools as it
     import string
-    import re
     
     ##input assertions
     #text
@@ -54,8 +52,9 @@ def sentiment_analysis(text,bank):
     txt = [i.lower() for i in txt]
     
     #flatten list and remove punctuation
+    txt = [i.translate(str.maketrans('', '', string.punctuation+'\n')) for i in txt]
+    txt = [i.split() for i in txt]
     txt = [i for j in txt for i in j]
-    txt = [i.translate(str.maketrans('', '', string.punctuation)) for i in txt]
     
     #strip useless word
     
@@ -71,13 +70,25 @@ def sentiment_analysis(text,bank):
     df['freq'] = df['count']/df['count'].sum()
     
     #add score column from dict if applicable
+    df['score'] = [word_bank[i] if i in word_bank.keys() else '' for i in df.index]
     
     word_freq = df
     
     ##score 
-    score_pos   = 1
-    score_neg   = -1
+    score_pos   = 0
+    score_neg   = 0
     score_combo = 0
+    
+    for score in df['score']:
+        if score == '':
+            pass
+        elif int(score) > 0:
+            score_pos += int(score)
+        elif int(score) < 0:            
+            score_neg += int(score)
+    
+    score_combo = score_pos + score_neg
+    
     score = (score_pos, score_neg, score_combo)
     
     ##output assertions
