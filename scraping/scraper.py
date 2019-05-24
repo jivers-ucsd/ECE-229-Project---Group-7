@@ -67,9 +67,9 @@ if __name__ == '__main__':
             print('Removing .DS_Store')
             filelist.remove('.DS_Store')
         except ValueError:
-            print('No .DS_Store...\n Continuing...')
+            print('No .DS_Store...\nContinuing...')
         else :
-            print('.DS_Store removed...\n Continuing...')
+            print('.DS_Store removed...\nContinuing...')
         print("In folder :", folder)
         print(filelist)
         for file in filelist:
