@@ -1,7 +1,28 @@
 Biden 297.2710863095238 -223.36289492214547
+pos:{'trump': 127, 'democrat': 10, 'republican': 5}
+neg:{'trump': 195, 'democrat': 17, 'republican': 6}
+
 Wall 304.39639153869996 -195.69704915898282
+pos:{'trump': 111, 'democrat': 5, 'republican': 8}
+neg:{'trump': 249, 'democrat': 7, 'republican': 6}
+
 Synagogue shooting 110.59401971870729 -133.94421852453112
+pos:{'trump': 19, 'democrat': 0, 'republican': 1}
+neg:{'trump': 57, 'democrat': 2, 'republican': 2}
+
 Royal Baby 130.88759488144427 -17.055364076028138
+pos:{'trump': 0, 'democrat': 0, 'republican': 0}
+neg:{'trump': 2, 'democrat': 0, 'republican': 0}
+
 Notre Dame 210.08868897306348 -164.43843783068786
+pos:{'trump': 6, 'democrat': 0, 'republican': 0}
+neg:{'trump': 21, 'democrat': 1, 'republican': 1}
+
 Hurricane michael 167.69759568903277 -135.91458686568058
+pos:{'trump': 11, 'democrat': 0, 'republican': 1}
+neg:{'trump': 30, 'democrat': 0, 'republican': 1}
+
 Bush eulogy 202.11983835377592 -63.55722175249518
+pos:{'trump': 5, 'democrat': 3, 'republican': 3}
+neg:{'trump': 15, 'democrat': 0, 'republican': 1}
+

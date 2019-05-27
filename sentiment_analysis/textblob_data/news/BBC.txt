@@ -1,6 +1,24 @@
 Biden 43.475145652958155 -31.107402146464644
+pos:{'trump': 15, 'democrat': 3, 'republican': 0}
+neg:{'trump': 27, 'democrat': 2, 'republican': 1}
+
 Royal Baby 161.48739480697975 -29.240753968253973
+pos:{'trump': 0, 'democrat': 0, 'republican': 0}
+neg:{'trump': 0, 'democrat': 0, 'republican': 0}
+
 Notre Dame 99.96015954882569 -75.92431448741513
+pos:{'trump': 1, 'democrat': 0, 'republican': 0}
+neg:{'trump': 1, 'democrat': 0, 'republican': 0}
+
 National Wall Emergency 126.4836356120731 -78.50205644884221
+pos:{'trump': 43, 'democrat': 1, 'republican': 0}
+neg:{'trump': 107, 'democrat': 3, 'republican': 1}
+
 Hurricane michael 6.73125 -5.505208333333334
+pos:{'trump': 1, 'democrat': 0, 'republican': 0}
+neg:{'trump': 4, 'democrat': 0, 'republican': 0}
+
 Bush eulogy 45.405826719576744 -21.368590668590674
+pos:{'trump': 5, 'democrat': 0, 'republican': 0}
+neg:{'trump': 7, 'democrat': 0, 'republican': 0}
+

@@ -16,15 +16,31 @@ import os
 def get_sentiment(s):
     pos_sent = 0
     neg_sent = 0
+    pos = {'trump':0, 'democrat':0, 'republican':0}
+    neg = {'trump':0, 'democrat':0, 'republican':0}
+    
     for text in s:
         blob = TextBlob(text)
         for sentence in blob.sentences:
             sent = sentence.sentiment.polarity
+            a = sentence.lower().words
             if sent > 0:
                 pos_sent += sent
+                if 'trump' in a:
+                    pos['trump'] += 1
+                if 'democrat' in a:
+                    pos['democrat'] += 1
+                if 'republican' in a:
+                    pos['republican'] += 1
             else:
                 neg_sent += sent
-    return pos_sent, neg_sent
+                if 'trump' in a:
+                    neg['trump'] += 1
+                if 'democrat' in a:
+                    neg['democrat'] += 1
+                if 'republican' in a:
+                    neg['republican'] += 1
+    return pos_sent, neg_sent, pos, neg
 
 if __name__ == "__main__":
     for i in range(1, len(sys.argv)):
@@ -49,7 +65,7 @@ if __name__ == "__main__":
             fd = open(DATA_DIR + folder + file)
             s = fd.readlines()
             fd.close()
-            pos_sent, neg_sent = get_sentiment(s)
-            outfd.write(file+' '+str(pos_sent)+' '+str(neg_sent)+'\n')
+            pos_sent, neg_sent, pos, neg = get_sentiment(s)
+            outfd.write(file+' '+str(pos_sent)+' '+str(neg_sent)+'\npos:'+str(pos)+'\nneg:'+str(neg)+'\n\n')
         outfd.close()
     print("Exiting...")

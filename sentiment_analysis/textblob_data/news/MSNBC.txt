@@ -1,5 +1,20 @@
 Biden 72.87495640933138 -39.564494070744075
+pos:{'trump': 10, 'democrat': 1, 'republican': 2}
+neg:{'trump': 23, 'democrat': 3, 'republican': 2}
+
 Wall 75.71919666813227 -52.24682042494542
+pos:{'trump': 38, 'democrat': 1, 'republican': 1}
+neg:{'trump': 98, 'democrat': 1, 'republican': 5}
+
 Synagogue shooting 127.45918733465608 -137.2071959765599
+pos:{'trump': 22, 'democrat': 1, 'republican': 1}
+neg:{'trump': 44, 'democrat': 6, 'republican': 2}
+
 Notre Dame 66.50340999278498 -59.55633445258444
+pos:{'trump': 5, 'democrat': 0, 'republican': 0}
+neg:{'trump': 10, 'democrat': 0, 'republican': 0}
+
 Hurricane michael 15.72833964646464 -7.089603174603174
+pos:{'trump': 6, 'democrat': 0, 'republican': 0}
+neg:{'trump': 10, 'democrat': 0, 'republican': 1}
+
