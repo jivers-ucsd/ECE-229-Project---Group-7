@@ -16,8 +16,8 @@ import os
 def get_sentiment(s):
     pos_sent = 0
     neg_sent = 0
-    pos = {'trump':0, 'democrat':0, 'republican':0}
-    neg = {'trump':0, 'democrat':0, 'republican':0}
+    pos = {'trump':0, 'trump_sent':0, 'democrat':0, 'republican':0}
+    neg = {'trump':0, 'trump_sent':0, 'democrat':0, 'republican':0}
     
     for text in s:
         blob = TextBlob(text)
@@ -28,6 +28,7 @@ def get_sentiment(s):
                 pos_sent += sent
                 if 'trump' in a:
                     pos['trump'] += 1
+                    pos['trump_sent'] += sent
                 if 'democrat' in a:
                     pos['democrat'] += 1
                 if 'republican' in a:
@@ -36,6 +37,7 @@ def get_sentiment(s):
                 neg_sent += sent
                 if 'trump' in a:
                     neg['trump'] += 1
+                    neg['trump_sent'] += sent
                 if 'democrat' in a:
                     neg['democrat'] += 1
                 if 'republican' in a:

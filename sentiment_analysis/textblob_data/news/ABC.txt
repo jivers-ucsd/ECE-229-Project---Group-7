@@ -1,28 +1,28 @@
 Biden 141.61133898508893 -95.08620325276574
-pos:{'trump': 64, 'democrat': 3, 'republican': 4}
-neg:{'trump': 83, 'democrat': 5, 'republican': 1}
+pos:{'trump': 64, 'trump_sent': 27.109235810485814, 'democrat': 3, 'republican': 4}
+neg:{'trump': 83, 'trump_sent': -4.9780618686868685, 'democrat': 5, 'republican': 1}
 
 Wall 80.49849867792575 -54.81673513407888
-pos:{'trump': 40, 'democrat': 1, 'republican': 0}
-neg:{'trump': 93, 'democrat': 2, 'republican': 7}
+pos:{'trump': 40, 'trump_sent': 15.342977730593697, 'democrat': 1, 'republican': 0}
+neg:{'trump': 93, 'trump_sent': -9.055772569444446, 'democrat': 2, 'republican': 7}
 
 Synagogue shooting 59.74061743811744 -43.613003989474585
-pos:{'trump': 3, 'democrat': 0, 'republican': 0}
-neg:{'trump': 7, 'democrat': 0, 'republican': 0}
+pos:{'trump': 3, 'trump_sent': 1.6104166666666668, 'democrat': 0, 'republican': 0}
+neg:{'trump': 7, 'trump_sent': -0.24166666666666667, 'democrat': 0, 'republican': 0}
 
 Royal Baby 45.28680074555076 -6.991725589225591
-pos:{'trump': 0, 'democrat': 0, 'republican': 0}
-neg:{'trump': 1, 'democrat': 0, 'republican': 0}
+pos:{'trump': 0, 'trump_sent': 0, 'democrat': 0, 'republican': 0}
+neg:{'trump': 1, 'trump_sent': 0.0, 'democrat': 0, 'republican': 0}
 
 Notre Dame 26.780535332722827 -23.168404431216928
-pos:{'trump': 0, 'democrat': 0, 'republican': 0}
-neg:{'trump': 2, 'democrat': 0, 'republican': 0}
+pos:{'trump': 0, 'trump_sent': 0, 'democrat': 0, 'republican': 0}
+neg:{'trump': 2, 'trump_sent': 0.0, 'democrat': 0, 'republican': 0}
 
 Hurricane michael 145.9384392632829 -118.09529312141126
-pos:{'trump': 10, 'democrat': 0, 'republican': 1}
-neg:{'trump': 28, 'democrat': 0, 'republican': 2}
+pos:{'trump': 10, 'trump_sent': 3.423809523809524, 'democrat': 0, 'republican': 1}
+neg:{'trump': 28, 'trump_sent': -1.9185515873015873, 'democrat': 0, 'republican': 2}
 
 Bush eulogy 172.73419772588517 -35.917644542957035
-pos:{'trump': 6, 'democrat': 0, 'republican': 2}
-neg:{'trump': 16, 'democrat': 1, 'republican': 5}
+pos:{'trump': 6, 'trump_sent': 2.133125, 'democrat': 0, 'republican': 2}
+neg:{'trump': 16, 'trump_sent': -1.080952380952381, 'democrat': 1, 'republican': 5}
 
