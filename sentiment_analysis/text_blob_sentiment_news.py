@@ -8,6 +8,7 @@ Created on Thu May 23 16:43:58 2019
 
 DATA_DIR = '../data/news/'
 OUT_DIR = './textblob_data/news/'
+DASH = '-----------------------------------------------------------------------'
 
 from textblob import TextBlob
 import sys
@@ -75,8 +76,8 @@ if __name__ == "__main__":
             fd.close()
             pos_sent, neg_sent, pos, neg, pos_str, neg_str = get_sentiment(s)
             outfd.write(file+' '+str(pos_sent)+' '+str(neg_sent)+'\npos:'+str(pos)+'\nneg:'+str(neg)+'\n\n')
-            outfd2.write(pos_str)
-            outfd3.write(neg_str)
+            outfd2.write('\n'+DASH+'\n'+file+'\n'+DASH+'\n'+pos_str)
+            outfd3.write('\n'+DASH+'\n'+file+'\n'+DASH+'\n'+neg_str)
         outfd.close()
         outfd2.close()
     print("Exiting...")
