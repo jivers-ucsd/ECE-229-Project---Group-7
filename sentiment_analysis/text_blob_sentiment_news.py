@@ -18,6 +18,8 @@ def get_sentiment(s):
     neg_sent = 0
     pos = {'trump':0, 'trump_sent':0, 'democrat':0, 'republican':0}
     neg = {'trump':0, 'trump_sent':0, 'democrat':0, 'republican':0}
+    pos_str = ''
+    neg_str = ''
     
     for text in s:
         blob = TextBlob(text)
@@ -29,6 +31,7 @@ def get_sentiment(s):
                 if 'trump' in a:
                     pos['trump'] += 1
                     pos['trump_sent'] += sent
+                    pos_str += ' '.join(a) + '\n'
                 if 'democrat' in a:
                     pos['democrat'] += 1
                 if 'republican' in a:
@@ -38,11 +41,12 @@ def get_sentiment(s):
                 if 'trump' in a:
                     neg['trump'] += 1
                     neg['trump_sent'] += sent
+                    neg_str += ' '.join(a) + '\n'
                 if 'democrat' in a:
                     neg['democrat'] += 1
                 if 'republican' in a:
                     neg['republican'] += 1
-    return pos_sent, neg_sent, pos, neg
+    return pos_sent, neg_sent, pos, neg, pos_str, neg_str
 
 if __name__ == "__main__":
     for i in range(1, len(sys.argv)):
@@ -53,6 +57,8 @@ if __name__ == "__main__":
             os.makedirs(OUT_DIR)
         filelist = os.listdir(path)
         outfd = open(OUT_DIR+sys.argv[i]+'.txt', 'w+')
+        outfd2 = open(OUT_DIR+sys.argv[i]+'_pos.txt', 'w+')
+        outfd3 = open(OUT_DIR+sys.argv[i]+'_neg.txt', 'w+')
         try :
             print('Removing .DS_Store')
             filelist.remove('.DS_Store')
@@ -67,7 +73,10 @@ if __name__ == "__main__":
             fd = open(DATA_DIR + folder + file)
             s = fd.readlines()
             fd.close()
-            pos_sent, neg_sent, pos, neg = get_sentiment(s)
+            pos_sent, neg_sent, pos, neg, pos_str, neg_str = get_sentiment(s)
             outfd.write(file+' '+str(pos_sent)+' '+str(neg_sent)+'\npos:'+str(pos)+'\nneg:'+str(neg)+'\n\n')
+            outfd2.write(pos_str)
+            outfd3.write(neg_str)
         outfd.close()
+        outfd2.close()
     print("Exiting...")
