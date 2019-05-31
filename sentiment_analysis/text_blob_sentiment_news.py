@@ -29,20 +29,20 @@ def get_sentiment(s):
             a = sentence.lower().words
             if sent > 0:
                 pos_sent += sent
+                pos_str += ' '.join(a) + '\n'
                 if 'trump' in a:
                     pos['trump'] += 1
                     pos['trump_sent'] += sent
-                    pos_str += ' '.join(a) + '\n'
                 if 'democrat' in a:
                     pos['democrat'] += 1
                 if 'republican' in a:
                     pos['republican'] += 1
             else:
                 neg_sent += sent
+                neg_str += ' '.join(a) + '\n'
                 if 'trump' in a:
                     neg['trump'] += 1
                     neg['trump_sent'] += sent
-                    neg_str += ' '.join(a) + '\n'
                 if 'democrat' in a:
                     neg['democrat'] += 1
                 if 'republican' in a:
