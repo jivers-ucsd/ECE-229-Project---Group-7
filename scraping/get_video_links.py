@@ -3,20 +3,11 @@
 Created on Tue May 14 21:59:01 2019
 
 @author: Jessica
+
+Gets video links in from users.
+Used as:
+    python get_video_links.py <name> <type>
 """
-'''
-Description
-    Takes a list of youtube content creators from a file and writes a file 
-    listing links to videos from that content creators channel.
-    
-Inputs
-    fname(str)
-        String file name to file containing list of content creators
-        
-Outputs
-    Writes a file of links to videos
-    
-'''
 ##imports
 from bs4 import BeautifulSoup as bs
 import requests
@@ -27,7 +18,21 @@ SRC_DIR = '../source_links/'
 
 ##body
 def get_links(user, t):
-    
+    """
+    Gets video links user.
+
+    Parameters
+    ----------
+    user : str
+        creator's username
+    t : char
+        type of content creator i.e., user, playlist, channel
+
+    Output
+    -------
+    Writes video links into file in source_links folder
+
+    """
     if t == 'u':
         content = 'https://www.youtube.com/user/'+user+'/videos'
     elif t == 'p':
@@ -49,6 +54,9 @@ def get_links(user, t):
     return videolist
 
 if __name__ == '__main__':
+    """
+    Gets video links for user, type when called on terminal.
+    """
     d = sys.argv[1]
     user = sys.argv[2]
     t = sys.argv[3]

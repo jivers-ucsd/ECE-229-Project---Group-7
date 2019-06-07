@@ -1,3 +1,15 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Sun May 26 23:35:22 2019
+
+@author: sethurishabh
+
+Scrapes comments from links in directories given.
+Used as:
+    python scraper.py <name of folders>
+"""
+
 from selenium import webdriver
 import os
 import time
@@ -7,9 +19,28 @@ SRC_DIR = '../source_links/'
 DATA_DIR = '../data/'
 
 def scrape(folder, file):
+    """
+    Scrapes comments from all links in the folder/file path.
+
+    Parameters
+    ----------
+    folder : str
+        folder of file with links
+    file : str
+        file containing links
+
+    Output
+    -------
+    Writes comments into file of given filename in data folder
+
+    """
+    assert isinstance(folder, str)
+    assert isinstance(file, str)
+    p = SRC_DIR + folder + file
+    assert os.path.exists(p)
     driver=webdriver.Chrome()
 
-    fd = open(SRC_DIR + folder + file)
+    fd = open(p)
     links = fd.read().splitlines()
     fd.close()
     
@@ -59,6 +90,9 @@ def scrape(folder, file):
 
 
 if __name__ == '__main__':
+    """
+    Automatically gets all comments from link in directories given in source_links/
+    """
     for i in range(1, len(sys.argv)):
         folder = sys.argv[i] + '/'
         path = SRC_DIR + folder

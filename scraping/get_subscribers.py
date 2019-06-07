@@ -4,6 +4,8 @@
 Created on Thu May 30 13:04:27 2019
 
 @author: sethurishabh
+
+Script to get subscriber of all users in users.txt.
 """
 
 ##imports
@@ -15,7 +17,25 @@ SRC_DIR = '../source_links/'
 
 ##body
 def get_subs(user, t):
-    
+    """
+    Gets subscriber count from user.
+
+    Parameters
+    ----------
+    user : str
+        creator's username
+    t : char
+        type of content creator i.e., user, playlist, channel
+
+    Returns
+    -------
+    n
+        Subscriber count
+
+    """
+    assert isinstance(user, str)
+    assert isinstance(t, str)
+    assert len(t) == 1
     if t == 'u':
         content = 'https://www.youtube.com/user/'+user+'/videos'
     elif t == 'p':
@@ -36,6 +56,9 @@ def get_subs(user, t):
     return n    
 
 if __name__ == '__main__':
+    """
+    Automatically gets subscribers for all users in users.txt.
+    """
     read_fd = open('users.txt')
     userlist = read_fd.readlines()
     read_fd.close()
