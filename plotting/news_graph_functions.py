@@ -2,6 +2,8 @@
 """
 Created on Thu Jun  6 15:31:49 2019
 @author: cyrus
+
+Functions for plotting graphs for News Channel Analysis Section
 """
 import numpy as np
 import matplotlib.pyplot as plt

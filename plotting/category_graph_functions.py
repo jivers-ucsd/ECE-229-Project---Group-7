@@ -4,13 +4,32 @@
 Created on Fri Jun  7 10:58:00 2019
 
 @author: sethurishabh
+
+Functions for plotting graphs for Demographic Analysis Section
 """
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
+import os
 
 def get_cooking_data(path):
+    """
+    Get Dataframe containing sentiment values per user for cooking category.
+    
+    Inputs
+    ------
+    path : str
+        Path to directory with cooking sentiments
+    
+    Returns
+    -------
+    cooking
+        Dataframe with sentiment values
+        
+    """
+    assert isinstance(path, str)
     fileName = path + 'cooking.txt'
+    assert os.path.exists(fileName), 'File Doesn\'t exist'
     cooking = pd.read_csv(fileName, sep=", ",header=None, engine='python')
     cooking.columns = ['Creator','File','Positive','Negative','Gender','Country']
     c = list(cooking['File'])
@@ -22,7 +41,23 @@ def get_cooking_data(path):
     return cooking
 
 def get_influencer_data(path):
-    fileName = path + 'influencers.txt'    
+    """
+    Get Dataframe containing sentiment values per user for influencer category.
+    
+    Inputs
+    ------
+    path : str
+        Path to directory with influencer sentiments
+    
+    Returns
+    -------
+    influencers
+        Dataframe with sentiment values
+        
+    """
+    assert isinstance(path, str)
+    fileName = path + 'influencers.txt' 
+    assert os.path.exists(fileName), 'File Doesn\'t exist'
     influencers = pd.read_csv(fileName, sep=" ",header=None)
     influencers.columns = ['Creator','Positive','Negative']
     c = list(influencers['Creator'])
@@ -34,7 +69,23 @@ def get_influencer_data(path):
     return influencers
 
 def get_gaming_data(path):
-    fileName = path + 'gaming.txt'    
+    """
+    Get Dataframe containing sentiment values per user for gaming category.
+    
+    Inputs
+    ------
+    path : str
+        Path to directory with gaming sentiments
+    
+    Returns
+    -------
+    gaming
+        Dataframe with sentiment values
+        
+    """
+    assert isinstance(path, str)
+    fileName = path + 'gaming.txt'
+    assert os.path.exists(fileName), 'File Doesn\'t exist'
     gaming = pd.read_csv(fileName, sep=" ",header=None)
     gaming.columns = ['Creator','Positive','Negative']
     c = list(gaming['Creator'])
@@ -46,12 +97,43 @@ def get_gaming_data(path):
     return gaming
 
 def normalize_sentiment(df):
+    """
+    Adds columns that normalize positive and negative sentiment.
+    
+    Inputs
+    ------
+    df : DataFrame
+        input data with positive and negative sentiments to be modified
+        
+    """
+    assert isinstance(df, pd.DataFrame), 'df must be of type DataFrame'
+    assert 'Negative' in df.columns, 'df must have column Negative'
+    assert 'Positive' in df.columns, 'df must have column Positive'
     df['Negative'] = abs(df['Negative'])
     df['Normalized Positive'] = df['Positive']/(df['Positive']+df['Negative'])*100
     df['Normalized Negative'] = df['Negative']/(df['Positive']+df['Negative'])*100
     
 def get_subscriber_counts(path, df):
+    """
+    Returns dataframe with subscribers and subscriber ranges.
+    
+    Inputs
+    ------
+    path : str
+        Path to directory with subscriber counts
+    df : DataFrame
+        input data frame 
+        
+    Returns
+    -------
+    with_subs
+        dataframe containing input data frame with subscriber information
+    
+    """
+    assert isinstance(path, str)
+    assert isinstance(df, pd.DataFrame), 'df must be of type DataFrame'
     fileName = path + 'subscriber_count.txt'
+    assert os.path.exists(fileName), 'File Doesn\'t exist'
     subs = pd.read_csv(fileName, sep=" ",header=None)
     subs.columns = ['Creator', 'Subscribers', 'Category']
     subs.set_index('Creator', inplace=True)
@@ -62,6 +144,16 @@ def get_subscriber_counts(path, df):
     return with_subs
 
 def plot_vs_category(df):
+    """
+    Plots bar chart of negativity vs category.
+    
+    Inputs
+    ------
+    df : DataFrame
+        input data frame
+    
+    """
+    assert isinstance(df, pd.DataFrame), 'df must be of type DataFrame'
     d2 = df.groupby(by=['Category']).mean()
     ax = d2.plot.bar(y=['Normalized Negative'],width = 0.8,rot=0)
     ax.set_ylabel('% of Negative Comments')
@@ -70,6 +162,16 @@ def plot_vs_category(df):
     ax.set_title('Negativity vs Category')
 
 def plot_vs_gender(df):
+    """
+    Plots bar chart of negativity vs gender.
+    
+    Inputs
+    ------
+    df : DataFrame
+        input data frame
+    
+    """
+    assert isinstance(df, pd.DataFrame), 'df must be of type DataFrame'
     d2 = df.groupby(by=['Gender']).mean()
     ax = d2.plot.bar(y=['Normalized Negative'],width = 0.8,rot=0)
     ax.set_ylabel('% of Negative Comments')
@@ -78,6 +180,16 @@ def plot_vs_gender(df):
     ax.set_title('Negativity vs Gender')
 
 def plot_vs_gender_by_category(df):
+    """
+    Plots bar chart of negativity vs gender split by category.
+    
+    Inputs
+    ------
+    df : DataFrame
+        input data frame
+    
+    """
+    assert isinstance(df, pd.DataFrame), 'df must be of type DataFrame'
     d2 = df.groupby(by=['Gender','Category']).mean()['Normalized Negative'].unstack().reset_index()
     d2.set_index('Gender', inplace=True)
     ax = d2.plot.bar(y=['Gaming', 'Cooking', 'Influencers'],width = 0.8,rot=0)
@@ -86,6 +198,16 @@ def plot_vs_gender_by_category(df):
     ax.set_title('Negativity vs Gender per Category')
     
 def plot_subs_vs_category(df):
+    """
+    Plots bar chart of subscribers vs category.
+    
+    Inputs
+    ------
+    df : DataFrame
+        input data frame
+    
+    """
+    assert isinstance(df, pd.DataFrame), 'df must be of type DataFrame'
     d2 = df.groupby(by=['Category']).mean()
     d2['Subscribers'] = d2['Subscribers']
     ax = d2.plot.bar(y=['Subscribers'],width = 0.8,rot=0)
@@ -94,6 +216,16 @@ def plot_subs_vs_category(df):
     ax.set_title('Subscriber Count vs Category')
     
 def plot_vs_subs(df):
+    """
+    Plots bar chart of negativity vs subscribers.
+    
+    Inputs
+    ------
+    df : DataFrame
+        input data frame
+    
+    """
+    assert isinstance(df, pd.DataFrame), 'df must be of type DataFrame'
     ind = np.arange(4)*3
     d2 = df.groupby(by=['Subscribers Range']).mean()
     neg = list(d2['Normalized Negative'])
@@ -105,6 +237,19 @@ def plot_vs_subs(df):
     plt.show()
 
 def plot_pie_chart(df, name):
+    """
+    Plots pie chart of positivity and negativity per category.
+    
+    Inputs
+    ------
+    df : DataFrame
+        input data frame
+    name : str
+        title of the graph
+    
+    """
+    assert isinstance(df, pd.DataFrame), 'df must be of type DataFrame'
+    assert isinstance(name, str)
     d2 = df.groupby(by='Category').mean()
     labels = 'Positive', 'Negative'
     sizes = [d2['Normalized Positive'], d2['Normalized Negative']]
@@ -116,6 +261,19 @@ def plot_pie_chart(df, name):
     plt.show()
     
 def plot_vs_subs_by_category(df, trends=[]):
+    """
+    Plots bar chart of negativity vs subscribers split by category.
+    
+    Inputs
+    ------
+    df : DataFrame
+        input data frame
+    trends : list
+        list of trendlines to be shown
+        
+    """
+    assert isinstance(df, pd.DataFrame), 'df must be of type DataFrame'
+    assert isinstance(trends, list), 'trends must be a list'
     d2 = df.groupby(by=['Subscribers Range','Category']).mean()['Normalized Negative'].unstack().reset_index()
     c = list(d2['Cooking'])
     g = list(d2['Gaming'])
