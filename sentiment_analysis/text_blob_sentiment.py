@@ -4,6 +4,10 @@
 Created on Thu May 23 16:43:58 2019
 
 @author: sethurishabh
+
+Run sentiment analysis on comments in files in directories given.
+Used as:
+    python text_blob_sentiment.py <name of folders>
 """
 
 DATA_DIR = '../data/'
@@ -14,6 +18,23 @@ import sys
 import os
 
 def get_sentiment(s):
+    """
+    Gets sentiment values from comments.
+
+    Parameters
+    ----------
+    s : list
+        list of comments
+
+    Returns
+    -------
+    pos_sent : float
+        positive sentiment value total
+    neg_sent : float
+        negative sentiment value total
+
+    """
+    assert isinstance(s, list)
     pos_sent = 0
     neg_sent = 0
     for text in s:
@@ -27,6 +48,9 @@ def get_sentiment(s):
     return pos_sent, neg_sent
 
 if __name__ == "__main__":
+    """
+    Automatically runs get_sentiment function for all comments stored in given directories.
+    """
     for i in range(1, len(sys.argv)):
         folder = sys.argv[i] + '/'
         path = DATA_DIR + folder

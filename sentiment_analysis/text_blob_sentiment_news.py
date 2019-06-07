@@ -4,6 +4,10 @@
 Created on Thu May 23 16:43:58 2019
 
 @author: sethurishabh
+
+Run sentiment analysis on comments in files in directories given. Includes getting sentiment analysis exclusive to news channels.
+Used as:
+    python text_blob_sentiment_news.py <name of channels>
 """
 
 DATA_DIR = '../data/news/'
@@ -15,6 +19,31 @@ import sys
 import os
 
 def get_sentiment(s):
+    """
+    Gets sentiment values from comments.
+
+    Parameters
+    ----------
+    s : list
+        list of comments
+
+    Returns
+    -------
+    pos_sent : float
+        positive sentiment value total
+    neg_sent : float
+        negative sentiment value total
+    pos : dict
+        dict of value totals for positive sentiment word counts and values
+    neg : dict
+        dict of value totals for negative sentiment word counts and values
+    pos_str : str
+        string containing all positive sentiment comments
+    neg_str : str
+        string containing all negative sentiment comments
+        
+    """
+    assert isinstance(s, list)
     pos_sent = 0
     neg_sent = 0
     pos = {'trump':0, 'trump_sent':0, 'democrat':0, 'republican':0}
@@ -50,6 +79,9 @@ def get_sentiment(s):
     return pos_sent, neg_sent, pos, neg, pos_str, neg_str
 
 if __name__ == "__main__":
+    """
+    Automatically runs get_sentiment function for all g.
+    """
     for i in range(1, len(sys.argv)):
         folder = sys.argv[i] + '/'
         path = DATA_DIR + folder
