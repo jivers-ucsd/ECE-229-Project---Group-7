@@ -43,6 +43,28 @@ pip install wordcloud
 - pandas
 - matplotlib
 
+## File Structure
+```
+Root
+|
++------ source_links
++------ data
++------ channel_sentiments
++------ scraping
+        |   get_subscribers.py
+        |   get_video_links.py
+        |   scraper.py
+        |   scraping_new.py
++------ sentiment_analysis
+        |   text_blob_sentiment.py
+        |   text_blob_sentiment_news.py
++------ plotting
+        |   category_graph_functions.py
+        |   news_graph_functions.py
+| 
+|   Graphing Notebook.ipynb
+```
+
 ## Scraping
 Create folders for content types in <code>/source_links</code> and maintain text files for each content creator with links to their videos in them.<br>
 Ex: <code>/source_links/gaming/pewdiepie</code> would contain links to videos made by pewdiepie.
