@@ -69,10 +69,23 @@ Root
 
 ## Runing the code
 ### Scraping
-Script for scraping youtube links is in <code>scraping</code>. 
+Script for scraping youtube links is in <code>scraping</code>.
 
 Create folders for content types in <code>source_links</code> and maintain text files for each content creator with links to their videos in them.<br>
 Ex: <code>source_links/gaming/pewdiepie</code> would contain links to videos made by pewdiepie.
+
+This can be done by using the <code>get_video_links</code> script followed by the category, username and type command line arguments. Type can be 'u' for user, 'p' for playlist or 'c' for channel.<br>
+Ex:
+```
+python get_video_links.py gaming pewdiepie u
+```
+will give us video links from pewdiepie's channel and are stored in <code>source_links/gaming/pewdiepie.txt</code>.
+
+For scraping subscriber counts, <code>get_subscribers</code>. The users need to be stored in <code>scraping/users.txt</code> in the format : [username] [type] [category]. <br>
+Ex: pewdiepie u gaming
+```
+python get_subscribers.py
+```
 
 Comments scraped will be outputted in folder <code>data</code> under the directory corresponding to the content type, in a text file with name corresponding to file in <code>source_links</code>
 
@@ -83,12 +96,14 @@ python scraper.py gaming
 ```
 for scraping all links in files in directory <code>source_links/gaming/</code>. Scraped comments will be available in <code>data/gaming/</code>.
 
-For news, we have to run the file <code>scraping_news.py</code> with the names of the channels passed as command line arguments.
+For news, we have to run the file <code>scraping_news.py</code> with the names of the channels passed as command line arguments.<br>
 Ex:
 ```
 python scraping_news.py CNN BBC Fox
 ```
 for scraping links in files <code>/source_links/news/CNN</code>,<code>/source_links/news/BBC</code> and <code>/source_links/news/Fox</code>. Scraped comments will be available in <code>data/news/CNN</code>, <code>data/news/BBC</code> and <code>data/news/Fox</code>.
+
+**Note**: Run the scripts from the scraping folder.
 
 ### Sentiment Analysis
 Code for sentiment analysis is in <code>sentiment_analysis</code>. It uses output structure from scraping. 
@@ -100,9 +115,20 @@ python text_blob_sentiment.py gaming
 will output total sentiment polarity for each creator in the category and output it to <code>sentiment_analysis/textblob_data/gaming.txt</code>
 
 For news,
-we have to run the file <code>text_blob_sentiment_news.py</code> with names of the channels passed as command line arguments.
-ex:
+we have to run the file <code>text_blob_sentiment_news.py</code> with names of the channels passed as command line arguments.<br>
+Ex:
 ```
 python text_blob_sentiment_new.py CNN BBC Fox
 ```
 will output sentiment polarities to <code>sentiment_analysis/textblob_data/news/CNN</code>, <code>sentiment_analysis/textblob_data/news/BBC</code> and <code>sentiment_analysis/textblob_data/news/Fox</code>
+
+**Note**: Run the scripts from the sentiment_analysis folder.
+
+### Plotting
+Code for plotting is kept in scripts in the plotting directory. The <code>Graphing Notebook</code> has the visualizations from the data.
+
+### Dataset
+Videolinks are available in <code>source_links</code>.<br>
+Subscriber count is available in <code>scraping/subscriber_count</code>.<br>
+Comments are available in <code>data/</code>.<br>
+Sentiment polarities are available in <code>sentiment_analysis/textblob_data</code>.
