@@ -141,4 +141,5 @@ Sentiment polarities are available in <code>sentiment_analysis/textblob_data</co
 The code has been run using:
 - Python 3.6.6
 - MacOS
+- Chrome Browser
 May not work with other configurations.
