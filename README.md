@@ -128,10 +128,17 @@ will output sentiment polarities to <code>sentiment_analysis/textblob_data/news/
 **Note**: Run the scripts from the sentiment_analysis folder.
 
 ### Plotting
-Code for plotting is kept in scripts in the plotting directory. The <code>Graphing Notebook</code> has the visualizations from the data.
+Code for plotting is kept in scripts in the plotting directory. The <code>Graphing Notebook</code> has the visualizations from the data. <br>
+For news, sentiment polarity data was moved from <code>sentiment_analysis/textblob_data/news</code> to <code>channel_sentiments</code>
 
 ### Dataset
 Videolinks are available in <code>source_links</code>.<br>
 Subscriber count is available in <code>scraping/subscriber_count</code>.<br>
 Comments are available in <code>data/</code>.<br>
 Sentiment polarities are available in <code>sentiment_analysis/textblob_data</code>.
+
+## Note
+The code has been run using:
+- Python 3.6.6
+- MacOS
+May not work with other configurations.
