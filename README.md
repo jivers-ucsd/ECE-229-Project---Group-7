@@ -99,12 +99,12 @@ python scraper.py gaming
 ```
 for scraping all links in files in directory <code>source_links/gaming/</code>. Scraped comments will be available in <code>data/gaming/</code>.
 
-For news, we have to run the file <code>scraping_news.py</code> with the names of the channels passed as command line arguments.<br>
+For news, we have to run the file <code>scraping_news.py</code>.<br>
 Ex:
 ```
-python scraping_news.py CNN BBC Fox
+python scraping_news.py news
 ```
-for scraping links in files <code>/source_links/news/CNN</code>,<code>/source_links/news/BBC</code> and <code>/source_links/news/Fox</code>. Scraped comments will be available in <code>data/news/CNN</code>, <code>data/news/BBC</code> and <code>data/news/Fox</code>.
+for scraping links in files <code>/source_links/news/CNN</code>,<code>/source_links/news/BBC</code>, <code>/source_links/news/Fox</code> etc. Scraped comments will be available in <code>data/news/CNN</code>, <code>data/news/BBC</code>, <code>data/news/Fox</code> etc.
 
 **Note**: Run the scripts from the scraping folder.
 
@@ -121,7 +121,7 @@ For news,
 we have to run the file <code>text_blob_sentiment_news.py</code> with names of the channels passed as command line arguments.<br>
 Ex:
 ```
-python text_blob_sentiment_new.py CNN BBC Fox
+python text_blob_sentiment_news.py CNN BBC Fox
 ```
 will output sentiment polarities to <code>sentiment_analysis/textblob_data/news/CNN</code>, <code>sentiment_analysis/textblob_data/news/BBC</code> and <code>sentiment_analysis/textblob_data/news/Fox</code>
 
