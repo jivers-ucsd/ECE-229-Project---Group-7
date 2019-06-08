@@ -81,11 +81,14 @@ python get_video_links.py gaming pewdiepie u
 ```
 will give us video links from pewdiepie's channel and are stored in <code>source_links/gaming/pewdiepie.txt</code>.
 
+For news channels, links were obtained manually, so we could choose stories being covered by both
+
 For scraping subscriber counts, <code>get_subscribers</code>. The users need to be stored in <code>scraping/users.txt</code> in the format : [username] [type] [category]. <br>
 Ex: pewdiepie u gaming
 ```
 python get_subscribers.py
 ```
+Script can't get subscribers of channel types, subscriber count was collected manually for those.
 
 Comments scraped will be outputted in folder <code>data</code> under the directory corresponding to the content type, in a text file with name corresponding to file in <code>source_links</code>
 
