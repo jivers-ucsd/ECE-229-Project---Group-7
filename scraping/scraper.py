@@ -38,7 +38,8 @@ def scrape(folder, file):
     assert isinstance(file, str)
     p = SRC_DIR + folder + file
     assert os.path.exists(p)
-    driver=webdriver.Chrome()
+    #driver=webdriver.Chrome()
+    driver=webdriver.Firefox()
 
     fd = open(p)
     links = fd.read().splitlines()
