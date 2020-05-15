@@ -121,9 +121,11 @@ if __name__ == '__main__':
         folder_list = os.listdir(SRC_DIR)
         folder_list.remove('test')
         
-        df = pd.DataFrame()
+        
         
         for folder in folder_list:
+            df = pd.DataFrame()
+            
             print("On Folder :", folder)
             fd = open(folder+'_dataFrame.txt', 'w+')
             file_list = os.listdir(os.path.join(SRC_DIR,folder))
