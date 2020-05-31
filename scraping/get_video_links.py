@@ -9,10 +9,11 @@ Used as:
     python get_video_links.py <name> <type>
 """
 ##imports
+from selenium import webdriver
 from bs4 import BeautifulSoup as bs
-import requests
-import sys
 import os
+import time
+import sys
 
 SRC_DIR = '../source_links/'
 
@@ -33,38 +34,71 @@ def get_links(user, t):
     Writes video links into file in source_links folder
 
     """
+    driver=webdriver.Firefox()
+    
     if t == 'u':
         content = 'https://www.youtube.com/user/'+user+'/videos'
+        classAttr = 'yt-simple-endpoint style-scope ytd-grid-video-renderer'
+        scrollCount = 5
     elif t == 'p':
         content = 'https://www.youtube.com/playlist?list='+user
+        classAttr = 'yt-simple-endpoint style-scope ytd-playlist-video-renderer'
+        scrollCount = 10
     elif t == 'c':
         content = 'https://www.youtube.com/channel/'+user+'/videos'
+        classAttr = 'yt-simple-endpoint style-scope ytd-grid-video-renderer'
+        scrollCount = 5
     
-    r = requests.get(content)
-    
-    soup = bs(r.text,'html.parser')
-    
-    vids = soup.findAll('a',attrs={'class':'yt-uix-tile-link'})
-    
+    print("Getting links :", user)
+    driver.get(content)
+    driver.maximize_window()
+    time.sleep(7)
+
+    driver.execute_script('window.scrollTo(0, 500);')
+    SCROLL_PAUSE_TIME = 5
+
+
+    # Get scroll height
+    last_height = driver.execute_script("return document.documentElement.scrollHeight")
+
+    for count in range(scrollCount):
+        #now wait let load the comments
+        time.sleep(SCROLL_PAUSE_TIME)
+        driver.execute_script('window.scrollTo(0, document.documentElement.scrollHeight);')
+        new_height = driver.execute_script("return document.documentElement.scrollHeight")
+        if last_height == new_height:
+            break
+        last_height = new_height    
+   
+    r = driver.page_source
+    soup = bs(r,'html.parser')
+    vids = soup.findAll('a',attrs={'class':classAttr})
+        
     videolist = []
     for v in vids:
         tmp = 'https://www.youtube.com' + v['href']
         videolist.append(tmp)
 
+    driver.close()
     return videolist
 
 if __name__ == '__main__':
     """
     Gets video links for user, type when called on terminal.
-    """
-    d = sys.argv[1]
-    user = sys.argv[2]
-    t = sys.argv[3]
-    links = get_links(user, t)
-    if not os.path.exists(SRC_DIR + d):
-        os.makedirs(SRC_DIR + d)
-    fd = open(SRC_DIR+d+'/'+user+'.txt', 'w+')
-    fd.write('\n'.join(links))
+    """  
+    
+    fd = open('users.txt','r')
+    r = fd.read().splitlines()
     fd.close()
-    print("Number of links :", len(links))
+    
+    for item in r:
+        user = item.split()[0]
+        t = item.split()[1]
+        g = item.split()[2]
+
+        links = get_links(user, t)
+        fd = open(SRC_DIR+g+'/'+user+'.txt', 'w+')
+        fd.write('\n'.join(links))
+        fd.close()
+        print("Number of links :", len(links))
     
