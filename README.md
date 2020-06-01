@@ -79,7 +79,7 @@ Root
 
 ## Runing the code
 ### Scraping
-1. Make sure <code>scraping/users.txt</code> is up to date with desired user list. Each line in the user list must be in the format "<Genre> <type> <user>". <Genre> is the family or type of user content (analysis is grouped by this genre!!), such as cooking or gaming.  <type> can be 'u' for user, 'p' for playlist or 'c' for channel. <user> is the username the content creator uploads to YouTube under.
+1. Make sure <code>scraping/users.txt</code> is up to date with desired user list. Each line in the user list must be in the format "Genre type user>. 'Genre' is the fa mily or type of user content (analysis is grouped by this genre!!), such as cooking or gaming.  'Type' can be 'u' for user, 'p' for playlist or 'c' for channel. 'User' is the username the content creator uploads to YouTube under.
 
 2. Run <code>scraping/run_get_video_links</code> to get links to 100+ videos for all the users in <code>scraping/users.txt</code>
 
