@@ -18,8 +18,6 @@ import pdb
 import traceback
 import sys
 
-SRC_DIR = '../data/source_links/'
-
 ##body
 def get_vid_data(folder, file):
     """
@@ -41,6 +39,9 @@ def get_vid_data(folder, file):
     """
     assert isinstance(folder, str)
     assert isinstance(file, str)
+    
+    SRC_DIR = '../data/source_links/'
+    
     p = os.path.join(SRC_DIR,folder,file)
     #assert os.path.exists(p)
     
@@ -60,8 +61,8 @@ def get_vid_data(folder, file):
     for link in links:
         print('Link %(l)d of %(Llen)d.' %
                   {'l': c, 'Llen': len(links)})
-        
-        for attempt in range(10):
+        N = 25
+        for attempt in range(N):
             try:
                 r = requests.get(link)
                 if r.status_code == 404:
@@ -90,6 +91,7 @@ def get_vid_data(folder, file):
                 
             except:
                 continue
+                print('Attempt failed. Retrying...')
             else:
                 titles.append(t)
                 views.append(v)
@@ -99,7 +101,7 @@ def get_vid_data(folder, file):
                 descriptions.append(desc)
                 break
         else:
-            print('Failed 10 times')
+            print('Failed %(N)d times'% {'N':N})
             
         #time.sleep(0.5) #slow program to let links load
         c = c+1

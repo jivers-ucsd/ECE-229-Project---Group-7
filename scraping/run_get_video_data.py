@@ -14,9 +14,6 @@ import pdb
 import traceback
 import sys
 
-#constants
-SRC_DIR = '../data/source_links/'
-
 #execute
 try:
     folder_list = os.listdir(SRC_DIR)
@@ -28,7 +25,6 @@ try:
         df = pd.DataFrame()
         
         print("On Folder :", folder)
-        fd = open(folder+'_dataFrame.txt', 'w+')
         file_list = os.listdir(os.path.join(SRC_DIR,folder))
         f = 1
         for file in file_list:

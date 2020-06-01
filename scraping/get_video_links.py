@@ -15,8 +15,6 @@ from bs4 import BeautifulSoup as bs
 import time
 #import sys
 
-SRC_DIR = '../source_links/'
-
 ##body
 def get_links(user, t):
     """
@@ -34,6 +32,8 @@ def get_links(user, t):
     Writes video links into file in source_links folder
 
     """
+    SRC_DIR = '../data/source_links/'
+    
     driver=webdriver.Firefox()
     
     if t == 'u':

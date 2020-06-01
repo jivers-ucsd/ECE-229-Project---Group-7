@@ -11,7 +11,7 @@ import time
 #import sys
 
 #constants
-SRC_DIR = '../source_links/'
+SRC_DIR = '../data/source_links/'
 
 #execute
 fd = open('users.txt','r')
