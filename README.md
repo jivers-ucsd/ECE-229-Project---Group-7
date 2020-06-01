@@ -21,12 +21,12 @@ From a user-supplied list of YouTube Users (<code>scraping/users.txt</code>), sc
   - Video Thumbs Up
   - Video Thumbs Down
 
-- **Scraping**
+**Scraping**
   - Used Selenium and Beautiful Soup to get video links for each user.
   - Used Beautiful Soup and Requests to scrape mata data for each video.
   
-- **Sentiment Analysis**
-  - <Kahna Update this>
+**Sentiment Analysis**
+Update 
 
 ## Required Packages
 - beautifulsoup4
@@ -56,16 +56,17 @@ pip install wordcloud
 ```
 Root
 |
-
 +------ data
 |       |   source_links
 |           |   cooking
 |           |   gaming
 |           |   influencers
 |           |   test
-|		|   cooking_dataFrame.txt
-|		|	gaming_dataFrame.txt
-|		|	influencers_dataFrame.txt
+|		    |   cooking_dataFrame.txt
+|		    |	  gaming_dataFrame.txt
+|		    |	  influencers_dataFrame.txt
+|       |   data_combined.p
+|       |   testfile.p
 |
 +------ scraping
 |       |   get_subscribers.py
@@ -73,8 +74,6 @@ Root
 |       |   scraper.py
 |       |   scraping_new.py
 |
-| 
-|   Graphing Notebook.ipynb
 ```
 
 ## Runing the code
