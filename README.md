@@ -80,9 +80,9 @@ Root
 ### Scraping
 1. Make sure <code>scraping/users.txt</code> is up to date with desired user list. Each line in the user list must be in the format "Genre type user>. 'Genre' is the fa mily or type of user content (analysis is grouped by this genre!!), such as cooking or gaming.  'Type' can be 'u' for user, 'p' for playlist or 'c' for channel. 'User' is the username the content creator uploads to YouTube under.
 
-2. Run <code>scraping/run_get_video_links</code> to get links to 100+ videos for all the users in <code>scraping/users.txt</code>
+2. Run <code>scraping/run_get_video_links</code> to get links to 100+ videos for all the users in <code>scraping/users.txt</code>. This code creates one folder per genre in <code>data/source_links</code> and in each genre-folder creates one text file per user.
 
-3. Run <code>scraping/run_get_video_links</code> to get links to 100+ videos for all the users in <code>scraping/users.txt</code>
+3. Run <code>scraping/run_get_video_data</code> to get the meta data for each video link. The script automatically finds all folders and in <code>data/source_links</code> and scrapes each video linked in the text files.
 
 **Note**: Run the scripts from the scraping folder.
 
