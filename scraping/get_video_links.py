@@ -11,9 +11,9 @@ Used as:
 ##imports
 from selenium import webdriver
 from bs4 import BeautifulSoup as bs
-import os
+#import os
 import time
-import sys
+#import sys
 
 SRC_DIR = '../source_links/'
 
@@ -81,24 +81,3 @@ def get_links(user, t):
 
     driver.close()
     return videolist
-
-if __name__ == '__main__':
-    """
-    Gets video links for user, type when called on terminal.
-    """  
-    
-    fd = open('users.txt','r')
-    r = fd.read().splitlines()
-    fd.close()
-    
-    for item in r:
-        user = item.split()[0]
-        t = item.split()[1]
-        g = item.split()[2]
-
-        links = get_links(user, t)
-        fd = open(SRC_DIR+g+'/'+user+'.txt', 'w+')
-        fd.write('\n'.join(links))
-        fd.close()
-        print("Number of links :", len(links))
-    
