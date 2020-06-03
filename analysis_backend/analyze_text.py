@@ -1,4 +1,4 @@
-def analyze_text(database_path='data', database='data_combined', text, genre, metric):
+def analyze_text(database_path='data', database='data_combined', text="default", genre="cooking", metric="likes"):
     '''
     Purpose: 
     Analyze the given text and produce color labels for the words as well as generate an overall score based on the
