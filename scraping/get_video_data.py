@@ -16,7 +16,7 @@ import sys
 
 ##body
 def get_vid_data(folder, file):
-    """
+    '''
     For each video in a list in a file, scrape the video name, description, 
     number of likes, number of dislikes, date posted, and number of view.
 
@@ -32,7 +32,7 @@ def get_vid_data(folder, file):
     df : pandas DataFrame
         data frame of scraped data for all videos
 
-    """
+    '''
     assert isinstance(folder, str)
     assert isinstance(file, str)
     

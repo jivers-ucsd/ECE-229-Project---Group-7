@@ -9,7 +9,7 @@ import time
 
 ##body
 def get_links(user, t):
-    """
+    '''
     Gets video links user.
 
     Parameters
@@ -24,7 +24,7 @@ def get_links(user, t):
     videolist : list
         list of links to videos for specificed user
 
-    """
+    '''
     SRC_DIR = './data/source_links/'
     
     #asserts
