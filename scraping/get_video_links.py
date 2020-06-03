@@ -1,13 +1,5 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Tue May 14 21:59:01 2019
 
-@author: Jessica
-
-Gets video links in from users.
-Used as:
-    python get_video_links.py <name> <type>
-"""
 ##imports
 from selenium import webdriver
 from bs4 import BeautifulSoup as bs
@@ -29,10 +21,17 @@ def get_links(user, t):
 
     Output
     -------
-    Writes video links into file in source_links folder
+    videolist : list
+        list of links to videos for specificed user
 
     """
     SRC_DIR = './data/source_links/'
+    
+    #asserts
+    assert(isinstance(user,str))
+    assert(isinstance(t,str))
+    assert(len(t) == 1)
+    assert(t in set(['u','p','c']))
     
     driver=webdriver.Firefox()
     

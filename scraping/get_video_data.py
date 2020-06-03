@@ -1,10 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Thu May 30 13:04:27 2019
-
-@author: sethurishabh
-
 Script to get subscriber of all users in users.txt.
 """
 
