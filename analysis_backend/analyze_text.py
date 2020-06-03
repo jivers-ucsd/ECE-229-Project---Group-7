@@ -1,10 +1,11 @@
-def analyze_text(database, text, genre, metric):
+def analyze_text(database_path='data', database='data_combined', text, genre, metric):
     '''
     Purpose: 
     Analyze the given text and produce color labels for the words as well as generate an overall score based on the
     given genre and metric
     
     Input:
+    database_path = str; scalar depicting the path of the database
     database = str; scalar depicting the name of the pickled database used to conduct analysis
     text = str; scalar depicting the text that needs to be analyzed
     genre = str; scalar depicting the genre of the content: "cooking", "gaming", "influencers"
@@ -22,7 +23,7 @@ def analyze_text(database, text, genre, metric):
     from textblob import TextBlob
     import pickle
     import os
-    data = pickle.load(open(os.path.join(os.getcwd()[0: -16], 'data', database + '.p'), 'rb'))
+    data = pickle.load(open(os.path.join(database_path, database + '.p'), 'rb'))
     Blob = TextBlob(text)
     scores = []
     df_genre = data[genre]
