@@ -6,6 +6,8 @@ Pytest test for get_video_links.py
 from get_video_data import get_vid_data
 import os
 
+SRC_DIR = '../data/source_links/'
+
 def test_get_video_data():
             
     folder_list = ['test']
