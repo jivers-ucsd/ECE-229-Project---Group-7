@@ -15,13 +15,13 @@ def generate_DF(year_begin=2015, year_end=2019, output_name='data_combined'):
     from statistics import mean, median
     from textblob import Word
     import pickle
-    genre_list = os.listdir(os.path.join(os.getcwd()[0: -16], 'data'))
+    genre_list = os.listdir(os.path.join(os.getcwd(), 'data'))
     genre_list_clean = [element for element in genre_list if "dataFrame" in element]
     month_categories = list(range(1, (year_end-year_begin+1)*12 + 1)) # 2015 - 2019 (both inclusive)
     data = dict()
     for genre in genre_list_clean:
         name = genre[0: genre.find('_dataFrame.txt')]
-        df_input = pd.read_csv(os.path.join(os.getcwd()[0: -16], 'data', genre))
+        df_input = pd.read_csv(os.path.join(os.getcwd(), 'data', genre))
         df = pd.DataFrame(columns=["words", "frequency_time", "likes", "likes_mean", "likes_median", "dislikes",
                                    "dislikes_mean", "dislikes_median", "views", "views_mean", "views_median",
                                    "polarity", "subjectivity"])
@@ -63,4 +63,4 @@ def generate_DF(year_begin=2015, year_end=2019, output_name='data_combined'):
             df.loc[n, 'views_median'] = median(df.views[n])
         df.drop(columns=['likes', 'dislikes', 'views'], inplace=True)
         data[name] = df
-        pickle.dump(data, open(os.path.join(os.getcwd()[0: -16], 'data', output_name + '.p'), 'wb'))
+        pickle.dump(data, open(os.path.join(os.getcwd(), 'data', output_name + '.p'), 'wb'))
