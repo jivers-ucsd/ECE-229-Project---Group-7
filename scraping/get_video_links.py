@@ -32,7 +32,7 @@ def get_links(user, t):
     Writes video links into file in source_links folder
 
     """
-    SRC_DIR = '../data/source_links/'
+    SRC_DIR = './data/source_links/'
     
     driver=webdriver.Firefox()
     

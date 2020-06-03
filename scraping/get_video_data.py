@@ -40,7 +40,7 @@ def get_vid_data(folder, file):
     assert isinstance(folder, str)
     assert isinstance(file, str)
     
-    SRC_DIR = '../data/source_links/'
+    SRC_DIR = './data/source_links/'
     
     p = os.path.join(SRC_DIR,folder,file)
     #assert os.path.exists(p)

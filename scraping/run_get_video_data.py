@@ -4,7 +4,7 @@ Automatically gets video data for all lists in SRC_DIR
 """
 
 ##imports
-from get_video_data import get_vid_data
+from scraping.get_video_data import get_vid_data
 from bs4 import BeautifulSoup as bs
 import requests
 import pandas as pd

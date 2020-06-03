@@ -3,16 +3,16 @@
 Pytest test for get_video_links.py
 """
 
-from get_video_links import get_links
+from scraping.get_video_links import get_links
 
 #constants
-SRC_DIR = '../data/source_links/'
+SRC_DIR = './data/source_links/'
 
 
 def test_get_video_links():
     
     #execute
-    fd = open('test_users.txt','r')
+    fd = open('scraping/test_users.txt','r')
     r = fd.read().splitlines()
     fd.close()
     

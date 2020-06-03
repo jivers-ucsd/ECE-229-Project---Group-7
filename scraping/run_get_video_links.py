@@ -3,7 +3,7 @@
 Gets video links for user, type when called on terminal.
 """  
 ##imports
-from get_video_links import get_links
+from scraping.get_video_links import get_links
 from selenium import webdriver
 from bs4 import BeautifulSoup as bs
 #import os
@@ -11,10 +11,10 @@ import time
 #import sys
 
 #constants
-SRC_DIR = '../data/source_links/'
+SRC_DIR = './data/source_links/'
 
 #execute
-fd = open('users.txt','r')
+fd = open('scraping/users.txt','r')
 r = fd.read().splitlines()
 fd.close()
 
