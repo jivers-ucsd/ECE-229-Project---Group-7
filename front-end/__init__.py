@@ -36,7 +36,7 @@ from ipywidgets import AppLayout, Layout
 
 #data pre-process and define variables
 #load data
-path=os.path.abspath(os.path.dirname(os.getcwd()))+'\\'+'data\\'
+path=os.getcwd()+'\\'+'data\\'
 data = pickle.load(open(path+'data_combined.p', 'rb'))
 
 year_end=2019

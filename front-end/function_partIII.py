@@ -17,7 +17,7 @@ def analyze_text_color(text, genre, metric):
     import pickle
     import os
     #load data
-    path=os.path.abspath(os.path.dirname(os.getcwd()))+'\\'+'data\\'
+    path=os.getcwd()+'\\'+'data\\'
     data = pickle.load(open(path+'data_combined.p', 'rb'))
     
     path=os.path.abspath(os.path.dirname(os.getcwd()))+'\\'

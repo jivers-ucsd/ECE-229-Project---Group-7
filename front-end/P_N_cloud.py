@@ -35,7 +35,7 @@ def P_N_cloud(x,Genre):
     import os
     os.system("__init__.py")
     #load data
-    path=os.path.abspath(os.path.dirname(os.getcwd()))+'\\'+'data\\'
+    path=os.getcwd()+'\\'+'data\\'
     data = pickle.load(open(path+'data_combined.p', 'rb'))
     year_end=2019
     year_start=2015
