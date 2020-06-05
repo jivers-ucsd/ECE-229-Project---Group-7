@@ -1,9 +1,49 @@
+loaded={}
+loaded['like']=0
+loaded['hate']=0
 def P_N_cloud(x,Genre):
     """
     This function is to plot graph for Part II: Like and Dislike words over time.
     x: input time
       Genre: diffenrent topics
       like: positive or negative result"""
+    #import modules
+    from ipywidgets import interact, interactive, fixed, interact_manual
+
+    import ipywidgets as widgets
+
+    from ipywidgets import FloatSlider
+
+    from ipywidgets import VBox, HBox, interactive_output
+
+    from ipywidgets import Dropdown
+    from matplotlib.image import imread
+    from ipywidgets import Button
+    import pickle
+
+    from matplotlib import pyplot as plt
+    from matplotlib.pylab import subplots
+    from wordcloud import WordCloud
+    import numpy as np
+    from random import shuffle
+    from ipywidgets import IntSlider
+    import pandas as pd
+    from matplotlib.image import imread
+
+    from ipywidgets import AppLayout, Layout
+    
+    import os
+    os.system("__init__.py")
+    #load data
+    path=os.path.abspath(os.path.dirname(os.getcwd()))+'\\'
+    data = pickle.load(open(path+'data_project.p', 'rb'))
+    year_end=2019
+    year_start=2015
+    
+    stat2=widgets.Label(value="Please select a input time period")
+    
+    
+    
     fig = plt.figure()
     loading="Now loading..."
 
@@ -79,4 +119,4 @@ def P_N_cloud(x,Genre):
             stat2.value='Complete! '
             loaded['like']=0
             loaded['hate']=0
-    plt.show()
+    #plt.show()

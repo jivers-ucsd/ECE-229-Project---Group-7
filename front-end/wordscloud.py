@@ -4,7 +4,39 @@ def wordscloud(x,Genre):
     x : input time
      Genre: different topics"""
     import os
+    from ipywidgets import interact, interactive, fixed, interact_manual
+
+    import ipywidgets as widgets
+
+    from ipywidgets import FloatSlider
+
+    from ipywidgets import VBox, HBox, interactive_output
+
+    from ipywidgets import Dropdown
+    from matplotlib.image import imread
+    from ipywidgets import Button
+    import pickle
+
+    from matplotlib import pyplot as plt
+    from matplotlib.pylab import subplots
+    from wordcloud import WordCloud
+    import numpy as np
+    from random import shuffle
+    from ipywidgets import IntSlider
+    import pandas as pd
+    from matplotlib.image import imread
+
+    from ipywidgets import AppLayout, Layout
+    
+    import os
     os.system("__init__.py")
+    #load data
+    path=os.path.abspath(os.path.dirname(os.getcwd()))+'\\'
+    data = pickle.load(open(path+'data_project.p', 'rb'))
+    year_end=2019
+    year_start=2015
+    
+    stat=widgets.Label(value="Please select a input time period")
     
     plt.cla()
     loading="Now loading..."
@@ -27,7 +59,7 @@ def wordscloud(x,Genre):
         plt.axis('off') 
         plt.text(0.5,0.5,string)
 
-        plt.show()       
+        #plt.show()       
         stat.value='Complete! '
         return
     lis=string.split(' ')
@@ -41,6 +73,6 @@ def wordscloud(x,Genre):
     plt.cla()
     plt.imshow(wc)  
     plt.axis('off') 
-    plt.show()
+    #plt.show()
 
     stat.value='Complete! '

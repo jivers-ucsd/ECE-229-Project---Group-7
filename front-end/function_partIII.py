@@ -1,3 +1,4 @@
+import ipywidgets as widgets
 def analyze_text_color(text, genre, metric):
     '''
     Purpose: 
@@ -14,6 +15,11 @@ def analyze_text_color(text, genre, metric):
     '''
     from textblob import TextBlob
     import pickle
+    import os
+    #load data
+    path=os.path.abspath(os.path.dirname(os.getcwd()))+'\\'
+    data = pickle.load(open(path+'data_project.p', 'rb'))
+    
     path=os.path.abspath(os.path.dirname(os.getcwd()))+'\\'
     pickle.load(open(path+'data_project.p', 'rb'))
     Blob = TextBlob(text)
