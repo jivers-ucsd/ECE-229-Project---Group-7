@@ -1,0 +1,177 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Analysis &#8212; ECE229 project 7 0.0.1 documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Front End" href="Frontend Functions.html" />
+    <link rel="prev" title="Webscraping" href="webscraping.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="Frontend Functions.html" title="Front End"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="webscraping.html" title="Webscraping"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">ECE229 project 7 0.0.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="Backend Functions.html" accesskey="U">back end</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="analysis">
+<h1>Analysis<a class="headerlink" href="#analysis" title="Permalink to this headline">¶</a></h1>
+<p>Below are the functions for generating word sentiment for the text obtained from Youtube</p>
+<dl class="py function">
+<dt id="analyze_text">
+<code class="sig-name descname">analyze_text</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">database</span></em>, <em class="sig-param"><span class="n">text</span></em>, <em class="sig-param"><span class="n">genre</span></em>, <em class="sig-param"><span class="n">metric</span></em><span class="sig-paren">)</span><a class="headerlink" href="#analyze_text" title="Permalink to this definition">¶</a></dt>
+<dd><p>Analyzes the given text and produce color labels for the words as well as generate an overall score based on the given genre and metric</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>database</strong> (<em>str</em>) – scalar depicting the name of the pickled database used to conduct analysis</p></li>
+<li><p><strong>text</strong> (<em>str</em>) – scalar depicting the text that needs to be analyzed</p></li>
+<li><p><strong>genre</strong> (<em>str</em>) – scalar depicting the genre of the content: “cooking”, “gaming”, “influencers”</p></li>
+<li><p><strong>metric</strong> (<em>str</em>) – scalar depicting the metric to base the analysis on: “likes_mean”,”dislikes_mean”, “dislikes_median”, “likes_median”, “views_mean”, polarity”, “subjectivity”</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return analysis</dt>
+<dd class="field-even"><p>a list with the same number of elements as number of words in a given text, with each corresponding element being the color for that word: “red” means bad, “yellow” means okay
+“green” means good and “white” means “Not found” (in database)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+<dt class="field-even">Return score_avg</dt>
+<dd class="field-even"><p>average value of the score: float or “Not applicable” (if none of the words matched the database)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="generate_DF">
+<code class="sig-name descname">generate_DF</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">year_begin</span><span class="o">=</span><span class="default_value">2015</span></em>, <em class="sig-param"><span class="n">year_end</span><span class="o">=</span><span class="default_value">2019</span></em>, <em class="sig-param"><span class="n">output_name</span><span class="o">=</span><span class="default_value">'data_combined'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#generate_DF" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generating the dataframes for the genres and various features based on the raw text files</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>year_begin</strong> (<em>int</em>) – numerical year from which the analysis is to start</p></li>
+<li><p><strong>year_end</strong> (<em>int</em>) – numerical year at the end of which the analysis is to terminate</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return output_name</dt>
+<dd class="field-even"><p>scalar depicting the name of the output file in which the database is pickled</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt>
+<code class="sig-name descname">test_analyze_text():</code></dt>
+<dd><p>tests the function analyze_text for a specific text from the database</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>assertionError</strong> – if analysis_test does not equal [‘white’,’green’,’yellow’,’yellow’,’white’,’green’,’yellow’]</p></li>
+<li><p><strong>assertionError</strong> – score_avg_test does not equal 0.3</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt>
+<code class="sig-name descname">test_generate_DF():</code></dt>
+<dd><p>tests the function generate_DF</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>assertionError</strong> – if any of values of df_truth does not equal values of df_test</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="webscraping.html"
+                        title="previous chapter">Webscraping</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="Frontend Functions.html"
+                        title="next chapter">Front End</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/analysis.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="Frontend Functions.html" title="Front End"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="webscraping.html" title="Webscraping"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">ECE229 project 7 0.0.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="Backend Functions.html" >back end</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020, Rui Zhong, Jessica Ivers, Kanha Batra, Zichao Li, Guangjun Xue, Yuchen Zang.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.0.4.
+    </div>
+  </body>
+</html>

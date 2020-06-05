@@ -1,0 +1,254 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Webscraping &#8212; ECE229 project 7 0.0.1 documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Analysis" href="analysis.html" />
+    <link rel="prev" title="back end" href="Backend Functions.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="analysis.html" title="Analysis"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="Backend Functions.html" title="back end"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">ECE229 project 7 0.0.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="Backend Functions.html" accesskey="U">back end</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="webscraping">
+<h1>Webscraping<a class="headerlink" href="#webscraping" title="Permalink to this headline">¶</a></h1>
+<p>Below are function definitions used to perform the webscraping from youtube and the respective test functions</p>
+<dl class="py function">
+<dt>
+<code class="sig-name descname">get_vid_data(folder,file):</code></dt>
+<dd><p>For each video in a list in a file, scrape the video name, description, number of likes, number of dislikes, date posted, and number of view.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>folder</strong> (<em>str</em>) – folder where files are stored with video link information, i.e - ‘cooking’</p></li>
+<li><p><strong>file</strong> (<em>str</em>) – file name of file holding the video links</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>data frame of scraped data for all videos</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>df : pandas DataFrame</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>TypeError</strong> – if folder or file is not a basestring</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p>Below is an example code of how to run get_vid_data</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">The following code automatically gets video data for all lists in SRC_DIR using get_vid_data</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="c1">#imports</span>
+<span class="kn">from</span> <span class="nn">scraping.get_video_data</span> <span class="kn">import</span> <span class="n">get_vid_data</span>
+<span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span> <span class="k">as</span> <span class="n">bs</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">pdb</span>
+<span class="kn">import</span> <span class="nn">traceback</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+
+<span class="c1">#execute</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">folder_list</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">SRC_DIR</span><span class="p">)</span>
+    <span class="n">folder_list</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s1">&#39;test&#39;</span><span class="p">)</span>
+
+
+
+    <span class="k">for</span> <span class="n">folder</span> <span class="ow">in</span> <span class="n">folder_list</span><span class="p">:</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;On Folder :&quot;</span><span class="p">,</span> <span class="n">folder</span><span class="p">)</span>
+        <span class="n">file_list</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">SRC_DIR</span><span class="p">,</span><span class="n">folder</span><span class="p">))</span>
+        <span class="n">f</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">file_list</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;On File </span><span class="si">%(f)d</span><span class="s1"> of </span><span class="si">%(flen)d</span><span class="s1">.&#39;</span> <span class="o">%</span>
+                   <span class="p">{</span><span class="s1">&#39;f&#39;</span><span class="p">:</span> <span class="n">f</span><span class="p">,</span> <span class="s1">&#39;flen&#39;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">file_list</span><span class="p">)})</span>
+            <span class="n">d</span> <span class="o">=</span> <span class="n">get_vid_data</span><span class="p">(</span><span class="n">folder</span><span class="p">,</span><span class="n">file</span><span class="p">)</span>
+            <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">f</span> <span class="o">=</span> <span class="n">f</span><span class="o">+</span><span class="mi">1</span>
+
+        <span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">folder</span><span class="o">+</span><span class="s1">&#39;_dataFrame.txt&#39;</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exiting...&quot;</span><span class="p">)</span>
+ <span class="k">except</span><span class="p">:</span>
+     <span class="n">extype</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">tb</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">exc_info</span><span class="p">()</span>
+     <span class="n">traceback</span><span class="o">.</span><span class="n">print_exc</span><span class="p">()</span>
+     <span class="n">pdb</span><span class="o">.</span><span class="n">post_mortem</span><span class="p">(</span><span class="n">tb</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="py function">
+<dt>
+<code class="sig-name descname">get_links(user, t):</code></dt>
+<dd><p>Gets video links user</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>user</strong> (<em>str</em>) – creator’s username i.e. - ‘bgfilms’</p></li>
+<li><p><strong>t</strong> (<em>char</em>) – type of content creator i.e. ‘u’ - user, ‘p’ - playlist, ‘c’ - channel</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>list of links to videos</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>videolist : list</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>TypeError</strong> – if user or t is not a basestring</p></li>
+<li><p><strong>TypeError</strong> – if length of t is not equal to 1</p></li>
+<li><p><strong>assertionError</strong> – if t is not equal to ‘u’, ‘p’, ‘c’</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<p>Below is an example code of how to use get_links</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">The following code gets video links for user, type when called on terminal</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">scraping.get_videeo_links</span> <span class="kn">import</span> <span class="n">get_links</span>
+<span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>
+<span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span> <span class="k">as</span> <span class="n">bs</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+
+<span class="n">SRC_DIR</span> <span class="o">=</span> <span class="s1">&#39;./data/source_links/&#39;</span>
+
+<span class="n">fd</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;scraping/users.txt&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+<span class="n">fd</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">r</span><span class="p">:</span>
+
+   <span class="n">user</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+   <span class="n">t</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
+   <span class="n">g</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">2</span><span class="p">]</span>
+
+   <span class="n">links</span> <span class="o">=</span> <span class="n">get_links</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+   <span class="n">fd</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">SRC_DIR</span><span class="o">+</span><span class="n">g</span><span class="o">+</span><span class="s1">&#39;/&#39;</span><span class="o">+</span><span class="n">user</span><span class="o">+</span><span class="s1">&#39;.txt&#39;</span><span class="p">,</span><span class="s1">&#39;w+&#39;</span><span class="p">)</span>
+   <span class="n">fd</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">links</span><span class="p">))</span>
+   <span class="n">fd</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+   <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of links :&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">links</span><span class="p">))</span>
+</pre></div>
+</div>
+<dl class="py function">
+<dt>
+<code class="sig-name descname">test_get_video_data():</code></dt>
+<dd><p>Pytest test for get_vid_data function</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>assertionError</strong> – if d.columns do not all contain ‘title’,’date’,’likes’,’dislikes’,’views’,’description’</p></li>
+<li><p><strong>assertionError</strong> – if d.title is not equal to ‘Group 48 Video Presentation’</p></li>
+<li><p><strong>assertionError</strong> – if d.date is not equal to ‘Mar 19,2020’</p></li>
+<li><p><strong>assertionError</strong> – if d.description is not equal to ‘Group 48 video presentation for UCSD ECE271B Winter2020.’</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt>
+<code class="sig-name descname">test_get_video_links():</code></dt>
+<dd><p>Pytest test for get_links function</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>assertionError</strong> – if links does not equal ‘<a class="reference external" href="https://www.youtube.com/watch?v=2tDmuNu_1FQ">https://www.youtube.com/watch?v=2tDmuNu_1FQ</a>’</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="Backend Functions.html"
+                        title="previous chapter">back end</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="analysis.html"
+                        title="next chapter">Analysis</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/webscraping.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="analysis.html" title="Analysis"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="Backend Functions.html" title="back end"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">ECE229 project 7 0.0.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="Backend Functions.html" >back end</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020, Rui Zhong, Jessica Ivers, Kanha Batra, Zichao Li, Guangjun Xue, Yuchen Zang.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.0.4.
+    </div>
+  </body>
+</html>
