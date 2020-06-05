@@ -40,9 +40,8 @@ import os
 
 
 #load data
-path=os.path.abspath(os.path.dirname(os.getcwd()))+'\\'
-data = pickle.load(open(path+'data_project.p', 'rb'))
-
+path=os.path.abspath(os.path.dirname(os.getcwd()))+'\\'+'data\\'
+data = pickle.load(open(path+'data_combined.p', 'rb'))
 
 # In[5]:
 
