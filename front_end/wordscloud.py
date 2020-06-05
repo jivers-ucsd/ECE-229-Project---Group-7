@@ -31,8 +31,10 @@ def wordscloud(x,Genre):
     import os
     os.system("__init__.py")
     #load data
-    path=os.getcwd()+'\\'+'data\\'
-    data = pickle.load(open(path+'data_combined.p', 'rb'))
+    path=os.path.join(os.getcwd(),'data')
+    path=os.path.join(path,'data_combined.p')
+    data = pickle.load(open(path, 'rb'))
+    
     year_end=2019
     year_start=2015
     

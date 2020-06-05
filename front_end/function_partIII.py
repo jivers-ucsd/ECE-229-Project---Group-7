@@ -17,11 +17,12 @@ def analyze_text_color(text, genre, metric):
     import pickle
     import os
     #load data
-    path=os.getcwd()+'\\'+'data\\'
+    path=os.path.join(os.getcwd(),'data')
+    path=os.path.join(path,'data_combined.p')
     #data = pickle.load(open(path+'data_combined.p', 'rb'))
     
     #path=os.path.abspath(os.path.dirname(os.getcwd()))+'\\'
-    pickle.load(open(path+'data_combined.p', 'rb'))
+    data=pickle.load(open(path, 'rb'))
     Blob = TextBlob(text)
     scores = []
     df_genre = data[genre]
