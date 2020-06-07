@@ -1,5 +1,5 @@
-Analysis
-========
+Analysis Functions
+==================
 
 Below are the functions for generating word sentiment for the text obtained from Youtube
 

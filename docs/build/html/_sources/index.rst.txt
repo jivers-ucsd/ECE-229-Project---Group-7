@@ -11,10 +11,10 @@ Group 7's Youtube Content creator dashboard web app
 
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
    
-   Backend Functions
-   Frontend Functions
+   backend
+   frontend
 
 
 Indices and tables

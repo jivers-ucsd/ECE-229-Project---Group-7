@@ -1,4 +1,4 @@
-Back-End
+Back End Functions
 ==================
 
 .. toctree::

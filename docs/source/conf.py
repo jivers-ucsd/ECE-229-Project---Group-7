@@ -14,12 +14,13 @@
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
 
+# import recommonmark
 
 # -- Project information -----------------------------------------------------
 
 project = 'ECE229 project 7'
-copyright = '2020, Rui Zhong, Jessica Ivers, Kanha Batra, Zichao Li, Guangjun Xue, Yuchen Zang'
-author = 'Rui Zhong, Jessica Ivers, Kanha Batra, Zichao Li, Guangjun Xue, Yuchen Zang'
+copyright = '2020, Rui Zhong, Jessica Ivers, Kanha Batra, Zichao Li, Guangjun Xue, Yuchen Zhang'
+author = 'Rui Zhong, Jessica Ivers, Kanha Batra, Zichao Li, Guangjun Xue, Yuchen Zhang'
 
 # The full version, including alpha/beta/rc tags
 release = '0.0.1'
@@ -30,8 +31,9 @@ release = '0.0.1'
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = [
-]
+extensions = ['sphinx.ext.doctest']
+
+
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
