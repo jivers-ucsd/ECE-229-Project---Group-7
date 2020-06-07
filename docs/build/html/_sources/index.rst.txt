@@ -37,7 +37,7 @@ This documentation contains the function and test function descriptions for
 Group 7's Youtube Content creator dashboard web app
 
 
-First ensure you install the proper packages:
+packages used:
 
 * textblob
 * pickle

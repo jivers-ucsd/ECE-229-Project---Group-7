@@ -4,7 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>Front-End &#8212; ECE229 project 7 0.0.1 documentation</title>
+    <title>Front End &#8212; ECE229 project 7 0.0.1 documentation</title>
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
@@ -37,8 +37,62 @@
           <div class="body" role="main">
             
   <div class="section" id="front-end">
-<h1>Front-End<a class="headerlink" href="#front-end" title="Permalink to this headline">¶</a></h1>
-<p>TO DO</p>
+<h1>Front End<a class="headerlink" href="#front-end" title="Permalink to this headline">¶</a></h1>
+<p>Below are the functions and test functions used to make the front end part of the website</p>
+<dl class="py function">
+<dt id="analyze_text_color">
+<code class="sig-name descname">analyze_text_color</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">text</span></em>, <em class="sig-param"><span class="n">genre</span></em>, <em class="sig-param"><span class="n">metric</span></em><span class="sig-paren">)</span><a class="headerlink" href="#analyze_text_color" title="Permalink to this definition">¶</a></dt>
+<dd><p>Analyze the given text that needs to be analyzed</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>text</strong> (<em>str</em>) – scalar depicting the text that needs to be analyzed</p></li>
+<li><p><strong>genre</strong> (<em>str</em>) – scalar depicting the genre of the content: “cooking”, “gaming”, “influencers”</p></li>
+<li><p><strong>metric</strong> (<em>str</em>) – scalar depicting the metric to base the analysis on: “likes_mean”, “likes_median”, “dislikes_mean”, “dislikes_median”, “views_mean”, “views_median”, “polarity”, “subjectivity”</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>analysis - a list with same number of elements as number of words in given text, with each corresponding element being the color for that word: “red” means bad, “yellow” means okay, “green” means good and “white” means “Not found” (in database)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="wordscloud">
+<code class="sig-name descname">wordscloud</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">Genre</span></em><span class="sig-paren">)</span><a class="headerlink" href="#wordscloud" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function is to plot graph for the first section: Cloud Map Over Time</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – input time</p></li>
+<li><p><strong>Genre</strong> – different topics</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="P_N_cloud">
+<code class="sig-name descname">P_N_cloud</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">Genre</span></em><span class="sig-paren">)</span><a class="headerlink" href="#P_N_cloud" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function is to plot graph for section II: Like and Dislike words over time</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – input time</p></li>
+<li><p><strong>Genre</strong> – different topics like: positive or negative results</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="color_changer">
+<code class="sig-name descname">color_changer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">Genre</span></em>, <em class="sig-param"><span class="n">Metric</span></em><span class="sig-paren">)</span><a class="headerlink" href="#color_changer" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </div>
 
 
