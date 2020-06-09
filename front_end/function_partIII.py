@@ -54,6 +54,15 @@ w=widgets.Textarea(
 )
 print(analyze_text_color('funny lives in splatoon', 'gaming', 'likes_mean'))
 def color_changer(x,Genre,Metric):
+    '''
+    Purpose: 
+    Change the color of inputed text instantly 
+    Input:
+    x = str; scalar depicting the text that needs to be analyzed
+    genre = str; scalar depicting the genre of the content: "cooking", "gaming", "influencers"
+    metric = str; scalar depicting the metric to base the analysis on: "likes_mean", "likes_median",
+             "dislikes_mean", "dislikes_median", "views_mean", "views_median", "polarity", "subjectivity"
+    '''
     stat3.value='Now loading...'
     categorization = analyze_text_color(x,Genre,Metric)
     words = x.split()
