@@ -37,6 +37,13 @@ Below are the functions and test functions used to make the front end part of th
 
 .. py:function:: color_changer(x,Genre,Metric)
 
+   Change the color of inputed text instantly
+
+   :param str x: scalar depicting the text that needs to be analyzed
+   :param str Genre: scalar depicting the genre of the content: "cooking", "gaming", "influencers"
+   :param str Metric: scalar depicting the metric to base the analysis on : "likes_mean", "likes_median", "dislikes_mean", "dislikes_median", "views_mean", "views_median", "polarity", "subjectivity"
+   
+
 
 
 

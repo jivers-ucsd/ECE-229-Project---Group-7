@@ -37,7 +37,7 @@ Below are the functions for generating word sentiment for the text obtained from
    tests the function analyze_text for a specific text from the database
    
    :raises assertionError: if analysis_test does not equal ['white','green','yellow','yellow','white','green','yellow']
-   :raises assertionError: score_avg_test does not equal 0.3
+   :raises assertionError: if score_avg_test does not equal 0.3
 
 .. py:function:: test_generate_DF():
 
