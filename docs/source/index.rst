@@ -25,43 +25,60 @@ YOUTUBE CONTENT CREATOR DASHBOARDS
 
 
 
+Intallation and Setup
+---------------------
+This code was run using Python 3.6.6 and is configured for using the Chrome browser. Alternate configurations are not guaranteed to work.
+
+The following pacakages are required for scraping data, analyzing the data, and displaying the results:
+
+**Webscraping**
+
+* beautifulsoup4
+* selenium (Then download the driver and follow further instructions from `here <https://selenium-python.readthedocs.io/installation.html>`_.)
+* requests
 
 
+**Analysis**
 
+* textblob (Download the corpora after installing the package with :code:`python -m textblob.download_corpora`)
+* statistics
 
-User Guide
-----------
+**Displaying Results**
 
-Welcome to the sphinx documentation for ECE 229 Group 7's 
-This documentation contains the function and test function descriptions for
-Group 7's Youtube Content creator dashboard web app
+* ipywidgets
+* wordcloud
+* matplotlib
 
+**Common to All**
 
-packages used:
-
-* textblob
 * pickle
 * os
 * pandas
 * datetime
-* statistics
-* bs4
-* requests
-* pdb
-* traceback
 * sys
-* selenium
 * time
-* ipywidgets
-* matplotlib
-* wordcloud
 * numpy
 
+
+User Guide
+----------
+**Runing the code**
+
+*Scraping*
+
+1. Make sure :code:`scraping/users.txt` is up to date with desired user list. Each line in the user list must be in the format "Genre type user". 'Genre' is the family or type of user content (analysis is grouped by this genre!!), such as cooking or gaming.  'Type' can be 'u' for user, 'p' for playlist or 'c' for channel. 'User' is the username the content creator uploads to YouTube under.
+
+2. Run :code:`scraping/run_get_video_links` to get links to 100+ videos for all the users in :code:`scraping/users.txt`. This code creates one folder per genre in :code:`data/source_links` and in each genre-folder creates one text file per user.
+
+3. Run :code:`scraping/run_get_video_data` to get the meta data for each video link. The script automatically finds all folders and in :code:`data/source_links` and scrapes each video linked in the text files.
+
+*Sentiment Analysis - UPDATE*
+
+*Visualisations - UPDATE*
 
 
 Table of Contents
 -----------------
-
 
 .. toctree::
    :maxdepth: 3
@@ -71,7 +88,7 @@ Table of Contents
 
 
 Indices and tables
-==================
+------------------
 
 * :ref:`genindex`
 * :ref:`modindex`
