@@ -1,29 +1,9 @@
 def test_partII():
     """This function will test part II """
-        #import modules
-    from ipywidgets import interact, interactive, fixed, interact_manual
-
-    import ipywidgets as widgets
-
-    from ipywidgets import FloatSlider
-
-    from ipywidgets import VBox, HBox, interactive_output
-
-    from ipywidgets import Dropdown
-    from matplotlib.image import imread
-    from ipywidgets import Button
-    import pickle
-
-    from matplotlib import pyplot as plt
-    from matplotlib.pylab import subplots
-    from wordcloud import WordCloud
-    import numpy as np
+    #import modules
     from random import shuffle
-    from ipywidgets import IntSlider
     import pandas as pd
-    from matplotlib.image import imread
 
-    from ipywidgets import AppLayout, Layout
     
     import os
     from front_end.P_N_cloud import P_N_cloud
