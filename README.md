@@ -89,7 +89,11 @@ Root
 ### Sentiment Analysis - UPDATE
 
 ### Visualisations - UPDATE
+1. Install package <code>wordcloud</code>.
 
+2. Make sure you have <code>data_combined.p</code> inside the <code>data</code> folder.
+
+3. Open <code>front_end/front-end_Group7-Copy1.ipynb</code> and run the code. You will get the interactive output.
 
 ## Note
 The code has been run using:
