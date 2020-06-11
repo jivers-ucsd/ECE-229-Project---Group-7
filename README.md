@@ -88,7 +88,7 @@ Root
 
 ### Sentiment Analysis - UPDATE
 
-### Visualisations - UPDATE
+### Visualisations 
 1. Install package <code>wordcloud</code>.
 
 2. Make sure you have <code>data_combined.p</code> inside the <code>data</code> folder.
