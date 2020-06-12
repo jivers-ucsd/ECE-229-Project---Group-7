@@ -80,6 +80,12 @@ User Guide
 
 *Visualisations - UPDATE*
 
+1. Install package :code:'wordcloud'.
+
+2. Make sure you have :code:'data_combined.p' inside the :code:'data' folder.
+
+3. Open :code:'front_end/front-end_Group7-Copy1.ipynb' and run the code. You will get the interactive output.
+
 
 Table of Contents
 -----------------
