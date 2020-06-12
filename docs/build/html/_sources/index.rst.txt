@@ -86,6 +86,10 @@ User Guide
 
 3. Open :code:`front_end/front-end_Group7-Copy1.ipynb` and run the code. You will get the interactive output.
 
+**Testing the Code**
+
+Tests are designed to run from the top level of the directory (not from within the 'test' folder). There are seven tests and they should all pass provided the required packages and software are installed.
+
 
 Table of Contents
 -----------------
