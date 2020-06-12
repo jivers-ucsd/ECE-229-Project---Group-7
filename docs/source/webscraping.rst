@@ -25,8 +25,8 @@ Below is an example code of how to run get_vid_data
    
 .. code-block:: python
 
-   >>> get_videeo_links('cooking', 'bgfilms.txt')
-   >>> 
+   >>> video_links = get_videeo_links('cooking', 'bgfilms.txt')
+   >>> video_links = 
                                                     title          date   likes  dislikes    views                                        description
    0                     Coffee Cake | Basics with Babish  May 14, 2020   58024       558  3695756  This video is sponsored by Trade Coffee. Get 3...
    1    Binging with Babish: Lil' Bits from Rick and M...  May 12, 2020  113244      1385  8213638  Rick and Morty is back and it's Ricker and Mor...
