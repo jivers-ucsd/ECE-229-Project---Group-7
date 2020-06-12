@@ -19,6 +19,17 @@ Below are the functions for generating word sentiment for the text obtained from
    :return: score_avg - average value of the score
    :rtype: float or "Not applicable" (if none of the words matched the database
 
+Below is an example code of how to use this function: 
+
+.. code-block:: python
+   
+   >>> categorization, overall_score = analyze_text("Hi, today we will cook pork", "cooking", "likes_mean")
+   >>> categorization
+   ['white', 'yellow', 'white', 'yellow', 'yellow', 'yellow']
+   >>> overall_score
+   29914.25
+
+
 .. py:function:: generate_DF(year_begin=2015, year_end=2019, output_path = 'data', output_name = 'data_combined',dir_raw_data='data')
 
    Generating the dataframes for the genres and various features based on the raw text files
@@ -30,18 +41,17 @@ Below are the functions for generating word sentiment for the text obtained from
    :param str output_name: scalar depicting the name of the output file in which the database is pickled
    :param str dir_raw_data: scalar depicting the directory from where the raw data needs to be picked up
 
+After generating a pickle file with the dataframes stored into it, we can load it like this:
 
+.. code-block:: python
 
-.. py:function:: test_analyze_text():
+   >>> import pickle
+   >>> data = pickle.load(open('data_project.p', 'rb'))
 
-   tests the function analyze_text for a specific text from the database
-   
-   :raises assertionError: if analysis_test does not equal ['white','green','yellow','yellow','white','green','yellow']
-   :raises assertionError: if score_avg_test does not equal 0.3
+so 'data' is a dictionary where the keys are the genres and the values are the corresponding dataframes
 
-.. py:function:: test_generate_DF():
+.. code-block:: python
 
-   tests the function generate_DF
-
-   :raises assertionError: if any of values of df_truth does not equal values of df_test
+   >>> data.keys()
+   dict_keys(['cooking', 'influencers', 'gaming'])
 

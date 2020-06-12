@@ -15,25 +15,24 @@ Function for front-end part I is given as below.
 
 Below is an example showing how to use the function.
 
-
 .. code-block:: python
+ 
+   >>> import ipywidgets as widgets
+   >>> from ipywidgets import interact
+   >>> year_end=2019
+   >>> year_start=2015
+   >>> Genre=['cooking', 'influencers', 'gaming']
+   >>> time_idx=pd.date_range(start=str(year_start)+'0101',end=str(year_end)+'1231',freq='M')
+   >>> options = [(item.strftime(fmt),item) for item in time_idx]
+   >>> fsx = widgets.SelectionSlider(description='Period', options=options, continuous_update=False)
+   >>> interactive_plot = interactive(wordscloud, x=fsx, Genre = ['cooking', 'influencers', 'gaming'])
+   interactive_plot
 
-    import os
-    from random import shuffle
-    from front_end.wordscloud import wordscloud
-    
-    year_end=2019
-    year_start=2015
-    Genre=['cooking', 'influencers', 'gaming']
-    time_idx=pd.date_range(start=str(year_start)+'0101',end=str(year_end)+'1231',freq='M')
-    fmt='%Y-%m'
-    options = [(item.strftime(fmt),item) for item in time_idx]
-    shuffle(options)
-    optionstest=[i[0] for i in options]
-    for j in range(2):
-        testx=optionstest[j]
-        for i in Genre:
-            wordscloud(testx,i)
+.. image:: wordcloud.png
+    :width: 260px
+    :align: center
+    :height: 175px
+
             
 Function for front-end part II is given as below.
 
@@ -53,27 +52,21 @@ Function for front-end part II is given as below.
 Below is an example showing how to use the function.
 
 .. code-block:: python
+   
+   >>> from ipywidgets import Dropdown
+   >>> year_end=2019
+   >>> year_start=2015
+   >>> time_idx=pd.date_range(start=str(year_start)+'0101',end=str(year_end)+'1231',freq='M')
+   >>> options = [(item.strftime(fmt),item) for item in time_idx]
+   >>> Genre = Dropdown(options = ['cooking','influencers','gaming'])
+   >>> Fsx = widgets.SelectionSlider(description = 'Period',options = options, continuous_update=False)
+   >>> interactive_plot_like_hate = interactive(P_N_cloud, x=Fsx, Genre = Genre)
+   interactive_plot_like_hate
 
-    import numpy as np
-    from random import shuffle
-    import pandas as pd
-    import os
-    from front_end.P_N_cloud import P_N_cloud
-    
-    
-    
-    year_end=2019
-    year_start=2015
-    Genre=['cooking', 'influencers', 'gaming']
-    time_idx=pd.date_range(start=str(year_start)+'0101',end=str(year_end)+'1231',freq='M')
-    fmt='%Y-%m'
-    options = [(item.strftime(fmt),item) for item in time_idx]
-    shuffle(options)
-    optionstest=[i[0] for i in options]
-    for j in range(2):
-        testx=optionstest[j]
-        for i in Genre:
-            P_N_cloud(testx,i)
+.. image:: P_N_cloud.png
+    :width: 260px
+    :align: center
+    :height: 175px
 
 Below are function definitions used to perform the front end part three
 Function analyze_text_color
@@ -91,6 +84,15 @@ Function analyze_text_color
    :rtype: list
    :raises TypeError: none
    
+Below is an example of how analyze_text_color is used
+
+.. code-block:: python
+
+   >>> print(analyze_text_color('funny lives in splatoon', 'gaming', 'likes_mean'))
+   ['yellow', 'yellow', 'yellow', 'white']
+   
+
+
 Function color_changer
 
 .. py:function:: color_changer(x,Genre,Metric)
@@ -102,11 +104,15 @@ Function color_changer
    :param str metric: scalar depicting the metric to base the analysis on: "likes_mean", "likes_median", "dislikes_mean", "dislikes_median", "views_mean", "views_median", "polarity", "subjectivity"
    :return: none
    
-Below is an example showing how to use the function.
+
+the function color_changer uses analyze_text_color to create the third section of the front end displays
 
 .. code-block:: python
+  
+   box = interactive(color_changer, x=w, Genre=['cooking','influencers','gaming'], Metric = ["likes_mean", "likes_median","dislikes_mean","dislikes_median","views_mean","views_median","polarity",subjectivity"]) 
+   box
 
-    from front_end.function_partIII import analyze_text_color,color_changer
-    assert analyze_text_color('today we will cook delicious beef', 'cooking', 'subjectivity')==['yellow', 'white', 'yellow', 'yellow', 'green', 'yellow']
-    assert analyze_text_color('amazing social skills', 'influencers', 'likes_mean')==['yellow', 'yellow', 'yellow']
-    assert analyze_text_color('funny lives in splatoon', 'gaming', 'likes_mean')==['yellow', 'yellow', 'yellow', 'white']
+.. image:: color_changer.png
+   :width: 275px
+   :align: center
+   :height: 175px

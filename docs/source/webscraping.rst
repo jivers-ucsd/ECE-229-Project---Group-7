@@ -19,6 +19,8 @@ Below are function definitions used to perform the webscraping from youtube and 
    :raises TypeError: if folder or file is not a basestring
 
 
+
+
 Below is an example code of how to run get_vid_data
    
 
@@ -71,7 +73,7 @@ Below is an example code of how to run get_vid_data
 
 .. py:function:: get_links(user, t):
 
-   Gets video links user
+   Gets all the video links for a specific user
 
    :param str user: creator's username i.e. - 'bgfilms'
    :param char t: type of content creator i.e. 'u' - user, 'p' - playlist, 'c' - channel

@@ -72,13 +72,13 @@ User Guide
 
 3. Run :code:`scraping/run_get_video_data` to get the meta data for each video link. The script automatically finds all folders and in :code:`data/source_links` and scrapes each video linked in the text files.
 
-*Sentiment Analysis - UPDATE*
+*Sentiment Analysis*
 
 1. Make sure that all the scraped data is stored as a :code:`.txt` file with the format :code:`<name>_dataFrame.txt` in the :code:`data/` directory.
 2. Run :code:`analysis_backend/generate_DF` to process all such files simultaneously from a given directory (default: :code:`data/`) and into a pickled dictionary of dataframes, each of which is indexed with a key described by the corresponding :code:`<name>`. This program cleans the data, controls the duplicates and removes the garbage elements. It also looks at the distributions of their various attributes across a genre.
 3. Run :code:`analysis_backend/analyze_text` to analyze a given piece of text based on the dataframes generated using :code:`generate_DF` to produce a colour coded output as well as an overall score.
 
-*Visualisations - UPDATE*
+*Visualisations*
 
 1. Install package :code:`wordcloud`.
 
