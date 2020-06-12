@@ -86,33 +86,11 @@ Below is an example code of how to run get_vid_data
 Below is an example code of how to use get_links
   
 .. code-block:: python
-   
-   """
-   The following code gets video links for user, type when called on terminal
-   """
-   from scraping.get_videeo_links import get_links
-   from selenium import webdriver
-   from bs4 import BeautifulSoup as bs
-   import time
 
-   
-   SRC_DIR = './data/source_links/'
-   
-   fd = open('scraping/users.txt','r')
-   r = fd.read().splitlines()
-   fd.close()
+   >>>video_list = get_links('chefsteps', 'u')
+   >>>video_list = ['https://www.youtube.com/watch?v=G8FplJ1BJyA', 'https://www.youtube.com/watch?v=LVXWSIjhAOc', 'https://www.youtube.com/watch?v=iNSc2sixyWQ', 'https://www.youtube.com/watch?v=RFA_RptDR4w', 'https://www.youtube.com/watch?v=giA5iA_6qGM', 'https://www.youtube.com/watch?v=NDm7Fo71kow', 'https://www.youtube.com/watch?v=Phtn7C62G0E', 'https://www.youtube.com/watch?v=xkoU3fzXnFg', 'https://www.youtube.com/watch?v=tUCtMYmKjfY', 'https://www.youtube.com/watch?v=KfQqEV6erqM', 'https://www.youtube.com/watch?v=7BMb4FMtvec', 'https://www.youtube.com/watch?v=mCkeZb6tN-c', 'https://www.youtube.com/watch?v=qkwPd8cyXSI', 'https://www.youtube.com/watch?v=jonmvu9yicE', 'https://www.youtube.com/watch?v=NWBdRRW4oCE', 'https://www.youtube.com/watch?v=KPoxKFmNs5E', 'https://www.youtube.com/watch?v=smyFpZQz-50', 'https://www.youtube.com/watch?v=nRHaZoI-Bhc', 'https://www.youtube.com/watch?v=VB_fsszLDvY', 'https://www.youtube.com/watch?v=nk6tzT-m8gQ', 'https://www.youtube.com/watch?v=Tf_eSMpNgh8', 'https://www.youtube.com/watch?v=21xmT4Jc3yM', 'https://www.youtube.com/watch?v=OLMWqoQP2pI', 'https://www.youtube.com/watch?v=4qKASRi7iJs', 'https://www.youtube.com/watch?v=owgPVAHdRpg', 'https://www.youtube.com/watch?v=liRwZsw3cq4', 'https://www.youtube.com/watch?v=eBF5DwJPH00', 'https://www.youtube.com/watch?v=-XGyf5bpOdg', 'https://www.youtube.com/watch?v=P1Ncswxv4QU']
 
-   for item in r:
 
-      user = item.split()[0]
-      t = item.split()[1]
-      g = item.split()[2]
-
-      links = get_links(user, t)
-      fd = open(SRC_DIR+g+'/'+user+'.txt','w+')
-      fd.write('\n'.join(links))
-      fd.close()
-      print("Number of links :", len(links))
 
 
    
