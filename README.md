@@ -28,53 +28,41 @@ From a user-supplied list of YouTube Users (<code>scraping/users.txt</code>), sc
 **Sentiment Analysis**
 Update 
 
-## Required Packages
-- beautifulsoup4
-```
-pip install beautifulsoup4
-```
-- selenium
-```
-pip install selenium
-```
-Then download the driver and follow further instructions from <a href="https://selenium-python.readthedocs.io/installation.html">here</a>.
 
-- textblob
-```
-pip install textblob
-python -m textblob.download_corpora
-```
-- wordcloud
-```
-pip install wordcloud
-```
-- numpy
-- pandas
-- matplotlib
+Intallation and Setup
+---------------------
+This code was run using Python 3.6.6 and is configured for using the Chrome browser. Alternate configurations are not guaranteed to work.
 
-## File Structure - UPDATE
-```
-Root
-|
-+------ data
-|       |   source_links
-|           |   cooking
-|           |   gaming
-|           |   influencers
-|           |   test
-|		    |   cooking_dataFrame.txt
-|		    |	  gaming_dataFrame.txt
-|		    |	  influencers_dataFrame.txt
-|       |   data_combined.p
-|       |   testfile.p
-|
-+------ scraping
-|       |   get_subscribers.py
-|       |   get_video_links.py
-|       |   scraper.py
-|       |   scraping_new.py
-|
-```
+The following pacakages are required for scraping data, analyzing the data, and displaying the results:
+
+**Webscraping**
+
+* beautifulsoup4
+* selenium (Then download the driver and follow further instructions from [here](https://selenium-python.readthedocs.io/installation.html).)
+* requests
+
+
+**Analysis**
+
+* textblob (Download the corpora after installing the package with <code>python -m textblob.download_corpora</code>)
+* statistics
+
+**Displaying Results**
+
+* ipywidgets
+* wordcloud
+* matplotlib
+
+**Common to All**
+
+* pickle
+* os
+* pandas
+* datetime
+* sys
+* time
+* numpy
+
 
 ## Runing the code
 ### Scraping
@@ -86,7 +74,12 @@ Root
 
 **Note**: Run the scripts from the scraping folder.
 
-### Sentiment Analysis - UPDATE
+### Sentiment Analysis
+1. Make sure that all the scraped data is stored as a :code:`.txt` file with the format :code:`<name>_dataFrame.txt` in the :code:`data/` directory.
+
+2. Run :code:`analysis_backend/generate_DF` to process all such files simultaneously from a given directory (default: :code:`data/`) and into a pickled dictionary of dataframes, each of which is indexed with a key described by the corresponding :code:`<name>`. This program cleans the data, controls the duplicates and removes the garbage elements. It also looks at the distributions of their various attributes across a genre.
+
+3. Run :code:`analysis_backend/analyze_text` to analyze a given piece of text based on the dataframes generated using :code:`generate_DF` to produce a colour coded output as well as an overall score.
 
 ### Visualisations 
 1. Install package <code>wordcloud</code>.
