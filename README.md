@@ -12,23 +12,6 @@
 ## Problem Statement
 How insane is it that sometimes you see the most amazing video on youtube, and yet it took nearly a decade for it to be popular? Or a subpar video which hits a million views within a week? A lot of it has to do with the way you market your content. Sponsoring advertisements for your posts helps, but it depends heavily on the textual supporting descriptions that you add. Google’s page ranking works on that: serving as an excellent example. But an even deeper question is: what makes certain words more popular than others? What receives more hate by the public? Are certain topics more active during election years or during a pandemic? All these questions can help provide a content maker that extra edge they need to push their content to maximum popularity. That’s the aim of our project. We’re trying to create a simple platform which serves as a proof of concept for how sentiment analysis can be extended to utility on a daily basis, with a very wide customer demographic. Obviously, this can be scaled up using a bigger dataset, which is something we would look into if we were to deploy it.
 
-## Methodology
-**Dataset Generation** 
-From a user-supplied list of YouTube Users (<code>scraping/users.txt</code>), scrape 100+ videos for the following content:
-  - Video Name
-  - Video descriptions
-  - Video posting date
-  - Video Thumbs Up
-  - Video Thumbs Down
-
-**Scraping**
-  - Used Selenium and Beautiful Soup to get video links for each user.
-  - Used Beautiful Soup and Requests to scrape mata data for each video.
-  
-**Sentiment Analysis**
-Update 
-
-
 Intallation and Setup
 ---------------------
 This code was run using Python 3.6.6 and is configured for using the Chrome browser. Alternate configurations are not guaranteed to work.
@@ -72,14 +55,12 @@ The following pacakages are required for scraping data, analyzing the data, and 
 
 3. Run <code>scraping/run_get_video_data</code> to get the meta data for each video link. The script automatically finds all folders and in <code>data/source_links</code> and scrapes each video linked in the text files.
 
-**Note**: Run the scripts from the scraping folder.
-
 ### Sentiment Analysis
-1. Make sure that all the scraped data is stored as a :code:`.txt` file with the format :code:`<name>_dataFrame.txt` in the :code:`data/` directory.
+1. Make sure that all the scraped data is stored as a `.txt` file with the format `<name>_dataFrame.txt` in the `data/` directory.
 
-2. Run :code:`analysis_backend/generate_DF` to process all such files simultaneously from a given directory (default: :code:`data/`) and into a pickled dictionary of dataframes, each of which is indexed with a key described by the corresponding :code:`<name>`. This program cleans the data, controls the duplicates and removes the garbage elements. It also looks at the distributions of their various attributes across a genre.
+2. Run `analysis_backend/generate_DF` to process all such files simultaneously from a given directory (default: `data/`) and into a pickled dictionary of dataframes, each of which is indexed with a key described by the corresponding `<name>`. This program cleans the data, controls the duplicates and removes the garbage elements. It also looks at the distributions of their various attributes across a genre.
 
-3. Run :code:`analysis_backend/analyze_text` to analyze a given piece of text based on the dataframes generated using :code:`generate_DF` to produce a colour coded output as well as an overall score.
+3. Run `analysis_backend/analyze_text` to analyze a given piece of text based on the dataframes generated using `generate_DF` to produce a colour coded output as well as an overall score.
 
 ### Visualisations 
 1. Install package <code>wordcloud</code>.
@@ -91,5 +72,5 @@ The following pacakages are required for scraping data, analyzing the data, and 
 ## Note
 The code has been run using:
 - Python 3.6.6
-- Chrome Browser
+- Firefox Browser
 May not work with other configurations.
