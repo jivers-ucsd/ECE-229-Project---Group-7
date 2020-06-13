@@ -68,48 +68,20 @@
 </dd></dl>
 
 <p>Below is an example code of how to run get_vid_data</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">The following code automatically gets video data for all lists in SRC_DIR using get_vid_data</span>
-<span class="sd">&quot;&quot;&quot;</span>
-
-<span class="c1">#imports</span>
-<span class="kn">from</span> <span class="nn">scraping.get_video_data</span> <span class="kn">import</span> <span class="n">get_vid_data</span>
-<span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span> <span class="k">as</span> <span class="n">bs</span>
-<span class="kn">import</span> <span class="nn">requests</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">pdb</span>
-<span class="kn">import</span> <span class="nn">traceback</span>
-<span class="kn">import</span> <span class="nn">sys</span>
-
-
-<span class="c1">#execute</span>
-<span class="k">try</span><span class="p">:</span>
-    <span class="n">folder_list</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">SRC_DIR</span><span class="p">)</span>
-    <span class="n">folder_list</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s1">&#39;test&#39;</span><span class="p">)</span>
-
-
-
-    <span class="k">for</span> <span class="n">folder</span> <span class="ow">in</span> <span class="n">folder_list</span><span class="p">:</span>
-        <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
-
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;On Folder :&quot;</span><span class="p">,</span> <span class="n">folder</span><span class="p">)</span>
-        <span class="n">file_list</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">SRC_DIR</span><span class="p">,</span><span class="n">folder</span><span class="p">))</span>
-        <span class="n">f</span> <span class="o">=</span> <span class="mi">1</span>
-        <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">file_list</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;On File </span><span class="si">%(f)d</span><span class="s1"> of </span><span class="si">%(flen)d</span><span class="s1">.&#39;</span> <span class="o">%</span>
-                   <span class="p">{</span><span class="s1">&#39;f&#39;</span><span class="p">:</span> <span class="n">f</span><span class="p">,</span> <span class="s1">&#39;flen&#39;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">file_list</span><span class="p">)})</span>
-            <span class="n">d</span> <span class="o">=</span> <span class="n">get_vid_data</span><span class="p">(</span><span class="n">folder</span><span class="p">,</span><span class="n">file</span><span class="p">)</span>
-            <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-            <span class="n">f</span> <span class="o">=</span> <span class="n">f</span><span class="o">+</span><span class="mi">1</span>
-
-        <span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">folder</span><span class="o">+</span><span class="s1">&#39;_dataFrame.txt&#39;</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
-     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exiting...&quot;</span><span class="p">)</span>
- <span class="k">except</span><span class="p">:</span>
-     <span class="n">extype</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">tb</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">exc_info</span><span class="p">()</span>
-     <span class="n">traceback</span><span class="o">.</span><span class="n">print_exc</span><span class="p">()</span>
-     <span class="n">pdb</span><span class="o">.</span><span class="n">post_mortem</span><span class="p">(</span><span class="n">tb</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">video_links</span> <span class="o">=</span> <span class="n">get_videeo_links</span><span class="p">(</span><span class="s1">&#39;cooking&#39;</span><span class="p">,</span> <span class="s1">&#39;bgfilms.txt&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">video_links</span> <span class="o">=</span>
+<span class="go">                                                 title          date   likes  dislikes    views                                        description</span>
+<span class="go">0                     Coffee Cake | Basics with Babish  May 14, 2020   58024       558  3695756  This video is sponsored by Trade Coffee. Get 3...</span>
+<span class="go">1    Binging with Babish: Lil&#39; Bits from Rick and M...  May 12, 2020  113244      1385  8213638  Rick and Morty is back and it&#39;s Ricker and Mor...</span>
+<span class="go">2                         Gnocchi | Basics with Babish   May 7, 2020   68519       491  3695756  Head to http://bit.ly/squarespacebabish to sav...</span>
+<span class="go">3    Binging with Babish: Margaritas from Archer (f...   May 5, 2020   58874       415  2071377  This week, H Jon Benjamin, the voice of Sterli...</span>
+<span class="go">4                      Pan Sauces | Basics with Babish  Apr 30, 2020   55737       492  5634594  Get 50% OFF your first 6-bottle box: https://b...</span>
+<span class="go">..                                                 ...           ...     ...       ...      ...                                                ...</span>
+<span class="go">175           Binging with Babish: Pizza from Deadpool  Jun 19, 2018   99661      1535  2955816  Wade Wilson knew exactly what he was doing whe...</span>
+<span class="go">176                       Burgers | Basics with Babish  Jun 14, 2018  116840      1860  3412617  Enter offer code “Babish” at Squarespace.com f...</span>
+<span class="go">177  Binging with Babish: Pasta Puttanesca from Lem...  Jun 12, 2018   92043      1062  4138144  Pasta puttanesca can mean many things - a bond...</span>
+<span class="go">178                  Risotto | Basics with Babish Live   Jun 8, 2018    2889       440  2828984  Every other week, cook-a-long with me on Twitc...</span>
+<span class="go">179    Binging with Babish: Cannoli from The Godfather   Jun 5, 2018   82324       732  3088100  Check out some summer-adventure-recipe-videos ...</span>
 </pre></div>
 </div>
 <dl class="py function">
@@ -140,32 +112,8 @@
 </dd></dl>
 
 <p>Below is an example code of how to use get_links</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">The following code gets video links for user, type when called on terminal</span>
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="kn">from</span> <span class="nn">scraping.get_videeo_links</span> <span class="kn">import</span> <span class="n">get_links</span>
-<span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>
-<span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span> <span class="k">as</span> <span class="n">bs</span>
-<span class="kn">import</span> <span class="nn">time</span>
-
-
-<span class="n">SRC_DIR</span> <span class="o">=</span> <span class="s1">&#39;./data/source_links/&#39;</span>
-
-<span class="n">fd</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;scraping/users.txt&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
-<span class="n">r</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
-<span class="n">fd</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-
-<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">r</span><span class="p">:</span>
-
-   <span class="n">user</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
-   <span class="n">t</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
-   <span class="n">g</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">2</span><span class="p">]</span>
-
-   <span class="n">links</span> <span class="o">=</span> <span class="n">get_links</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
-   <span class="n">fd</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">SRC_DIR</span><span class="o">+</span><span class="n">g</span><span class="o">+</span><span class="s1">&#39;/&#39;</span><span class="o">+</span><span class="n">user</span><span class="o">+</span><span class="s1">&#39;.txt&#39;</span><span class="p">,</span><span class="s1">&#39;w+&#39;</span><span class="p">)</span>
-   <span class="n">fd</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">links</span><span class="p">))</span>
-   <span class="n">fd</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-   <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of links :&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">links</span><span class="p">))</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="go">&gt;&gt;&gt;video_list = get_links(&#39;chefsteps&#39;, &#39;u&#39;)</span>
+<span class="go">&gt;&gt;&gt;video_list = [&#39;https://www.youtube.com/watch?v=G8FplJ1BJyA&#39;, &#39;https://www.youtube.com/watch?v=LVXWSIjhAOc&#39;, &#39;https://www.youtube.com/watch?v=iNSc2sixyWQ&#39;, &#39;https://www.youtube.com/watch?v=RFA_RptDR4w&#39;, &#39;https://www.youtube.com/watch?v=giA5iA_6qGM&#39;, &#39;https://www.youtube.com/watch?v=NDm7Fo71kow&#39;, &#39;https://www.youtube.com/watch?v=Phtn7C62G0E&#39;, &#39;https://www.youtube.com/watch?v=xkoU3fzXnFg&#39;, &#39;https://www.youtube.com/watch?v=tUCtMYmKjfY&#39;, &#39;https://www.youtube.com/watch?v=KfQqEV6erqM&#39;, &#39;https://www.youtube.com/watch?v=7BMb4FMtvec&#39;, &#39;https://www.youtube.com/watch?v=mCkeZb6tN-c&#39;, &#39;https://www.youtube.com/watch?v=qkwPd8cyXSI&#39;, &#39;https://www.youtube.com/watch?v=jonmvu9yicE&#39;, &#39;https://www.youtube.com/watch?v=NWBdRRW4oCE&#39;, &#39;https://www.youtube.com/watch?v=KPoxKFmNs5E&#39;, &#39;https://www.youtube.com/watch?v=smyFpZQz-50&#39;, &#39;https://www.youtube.com/watch?v=nRHaZoI-Bhc&#39;, &#39;https://www.youtube.com/watch?v=VB_fsszLDvY&#39;, &#39;https://www.youtube.com/watch?v=nk6tzT-m8gQ&#39;, &#39;https://www.youtube.com/watch?v=Tf_eSMpNgh8&#39;, &#39;https://www.youtube.com/watch?v=21xmT4Jc3yM&#39;, &#39;https://www.youtube.com/watch?v=OLMWqoQP2pI&#39;, &#39;https://www.youtube.com/watch?v=4qKASRi7iJs&#39;, &#39;https://www.youtube.com/watch?v=owgPVAHdRpg&#39;, &#39;https://www.youtube.com/watch?v=liRwZsw3cq4&#39;, &#39;https://www.youtube.com/watch?v=eBF5DwJPH00&#39;, &#39;https://www.youtube.com/watch?v=-XGyf5bpOdg&#39;, &#39;https://www.youtube.com/watch?v=P1Ncswxv4QU&#39;]</span>
 </pre></div>
 </div>
 <dl class="py function">
@@ -248,7 +196,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2020, Rui Zhong, Jessica Ivers, Kanha Batra, Zichao Li, Guangjun Xue, Yuchen Zhang.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.0.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.0.4.
     </div>
   </body>
 </html>

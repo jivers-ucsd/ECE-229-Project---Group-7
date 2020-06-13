@@ -116,3 +116,15 @@ the function color_changer uses analyze_text_color to create the third section o
    :width: 275px
    :align: center
    :height: 175px
+
+
+Below is an example of how to test the analyze_text_color function
+
+
+.. code-block:: python
+
+   from  front_end.function_partIII import analyze_text_color, color_changer
+   assert analyze_text_color('today we will cook delicious beef', 'cooking', 'subjectivity')==['yellow','white','yellow','yellow','green','yellow']
+   assert analyze_text_color('amazing social skills', 'influencers', 'likes_mean')==['yellow', 'yellow', 'yellow']
+   assert analyze_text_color('funny lives in splatoon', 'gaming', 'likes_mean')==['yellow','yellow','yellow','white']
+

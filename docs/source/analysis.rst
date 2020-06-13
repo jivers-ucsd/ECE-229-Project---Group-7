@@ -55,3 +55,24 @@ so 'data' is a dictionary where the keys are the genres and the values are the c
    >>> data.keys()
    dict_keys(['cooking', 'influencers', 'gaming'])
 
+
+Below are the test functions for analyze_text and generate_DF
+
+.. py:function:: test_analyze_text():
+
+   tests the function analyze_text for a specific text from the database
+
+   :raises assertionError: if analysis_test does not equal ['white','green','yellow','yellow','white','green','yellow']
+   :raises assertionError: if score_avg_test does not equal 0.3
+
+.. py:function:: test_generate_DF():
+
+   tests the function generate_DF
+
+   :raises assertionError: if any of the values of df_truth does not equal values of df_test
+
+
+
+
+
+

@@ -109,6 +109,32 @@
 <span class="go">dict_keys([&#39;cooking&#39;, &#39;influencers&#39;, &#39;gaming&#39;])</span>
 </pre></div>
 </div>
+<p>Below are the test functions for analyze_text and generate_DF</p>
+<dl class="py function">
+<dt>
+<code class="sig-name descname">test_analyze_text():</code></dt>
+<dd><p>tests the function analyze_text for a specific text from the database</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>assertionError</strong> – if analysis_test does not equal [‘white’,’green’,’yellow’,’yellow’,’white’,’green’,’yellow’]</p></li>
+<li><p><strong>assertionError</strong> – if score_avg_test does not equal 0.3</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt>
+<code class="sig-name descname">test_generate_DF():</code></dt>
+<dd><p>tests the function generate_DF</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>assertionError</strong> – if any of the values of df_truth does not equal values of df_test</p>
+</dd>
+</dl>
+</dd></dl>
+
 </div>
 
 
@@ -162,7 +188,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2020, Rui Zhong, Jessica Ivers, Kanha Batra, Zichao Li, Guangjun Xue, Yuchen Zhang.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.0.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.0.4.
     </div>
   </body>
 </html>

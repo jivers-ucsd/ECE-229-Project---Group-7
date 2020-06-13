@@ -169,6 +169,13 @@ Function analyze_text_color</p>
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="_images/color_changer.png"><img alt="_images/color_changer.png" class="align-center" src="_images/color_changer.png" style="width: 275px; height: 175px;" /></a>
+<p>Below is an example of how to test the analyze_text_color function</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span>  <span class="nn">front_end.function_partIII</span> <span class="kn">import</span> <span class="n">analyze_text_color</span><span class="p">,</span> <span class="n">color_changer</span>
+<span class="k">assert</span> <span class="n">analyze_text_color</span><span class="p">(</span><span class="s1">&#39;today we will cook delicious beef&#39;</span><span class="p">,</span> <span class="s1">&#39;cooking&#39;</span><span class="p">,</span> <span class="s1">&#39;subjectivity&#39;</span><span class="p">)</span><span class="o">==</span><span class="p">[</span><span class="s1">&#39;yellow&#39;</span><span class="p">,</span><span class="s1">&#39;white&#39;</span><span class="p">,</span><span class="s1">&#39;yellow&#39;</span><span class="p">,</span><span class="s1">&#39;yellow&#39;</span><span class="p">,</span><span class="s1">&#39;green&#39;</span><span class="p">,</span><span class="s1">&#39;yellow&#39;</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">analyze_text_color</span><span class="p">(</span><span class="s1">&#39;amazing social skills&#39;</span><span class="p">,</span> <span class="s1">&#39;influencers&#39;</span><span class="p">,</span> <span class="s1">&#39;likes_mean&#39;</span><span class="p">)</span><span class="o">==</span><span class="p">[</span><span class="s1">&#39;yellow&#39;</span><span class="p">,</span> <span class="s1">&#39;yellow&#39;</span><span class="p">,</span> <span class="s1">&#39;yellow&#39;</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">analyze_text_color</span><span class="p">(</span><span class="s1">&#39;funny lives in splatoon&#39;</span><span class="p">,</span> <span class="s1">&#39;gaming&#39;</span><span class="p">,</span> <span class="s1">&#39;likes_mean&#39;</span><span class="p">)</span><span class="o">==</span><span class="p">[</span><span class="s1">&#39;yellow&#39;</span><span class="p">,</span><span class="s1">&#39;yellow&#39;</span><span class="p">,</span><span class="s1">&#39;yellow&#39;</span><span class="p">,</span><span class="s1">&#39;white&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
 </div>
 
 
@@ -215,7 +222,7 @@ Function analyze_text_color</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2020, Rui Zhong, Jessica Ivers, Kanha Batra, Zichao Li, Guangjun Xue, Yuchen Zhang.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.0.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.0.4.
     </div>
   </body>
 </html>

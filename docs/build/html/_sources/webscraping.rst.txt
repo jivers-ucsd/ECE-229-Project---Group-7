@@ -23,52 +23,24 @@ Below are function definitions used to perform the webscraping from youtube and 
 
 Below is an example code of how to run get_vid_data
    
-
 .. code-block:: python
+
+   >>> video_links = get_videeo_links('cooking', 'bgfilms.txt')
+   >>> video_links = 
+                                                    title          date   likes  dislikes    views                                        description
+   0                     Coffee Cake | Basics with Babish  May 14, 2020   58024       558  3695756  This video is sponsored by Trade Coffee. Get 3...
+   1    Binging with Babish: Lil' Bits from Rick and M...  May 12, 2020  113244      1385  8213638  Rick and Morty is back and it's Ricker and Mor...
+   2                         Gnocchi | Basics with Babish   May 7, 2020   68519       491  3695756  Head to http://bit.ly/squarespacebabish to sav...
+   3    Binging with Babish: Margaritas from Archer (f...   May 5, 2020   58874       415  2071377  This week, H Jon Benjamin, the voice of Sterli...
+   4                      Pan Sauces | Basics with Babish  Apr 30, 2020   55737       492  5634594  Get 50% OFF your first 6-bottle box: https://b...
+   ..                                                 ...           ...     ...       ...      ...                                                ...
+   175           Binging with Babish: Pizza from Deadpool  Jun 19, 2018   99661      1535  2955816  Wade Wilson knew exactly what he was doing whe...
+   176                       Burgers | Basics with Babish  Jun 14, 2018  116840      1860  3412617  Enter offer code “Babish” at Squarespace.com f...
+   177  Binging with Babish: Pasta Puttanesca from Lem...  Jun 12, 2018   92043      1062  4138144  Pasta puttanesca can mean many things - a bond...
+   178                  Risotto | Basics with Babish Live   Jun 8, 2018    2889       440  2828984  Every other week, cook-a-long with me on Twitc...
+   179    Binging with Babish: Cannoli from The Godfather   Jun 5, 2018   82324       732  3088100  Check out some summer-adventure-recipe-videos ...
+
    
-   """
-   The following code automatically gets video data for all lists in SRC_DIR using get_vid_data
-   """
-	
-   #imports
-   from scraping.get_video_data import get_vid_data
-   from bs4 import BeautifulSoup as bs
-   import requests
-   import pandas as pd
-   import os
-   import pdb
-   import traceback
-   import sys   
-
-
-   #execute
-   try:
-       folder_list = os.listdir(SRC_DIR)
-       folder_list.remove('test')
-    
-    
-    
-       for folder in folder_list:
-           df = pd.DataFrame()
-        
-           print("On Folder :", folder)
-           file_list = os.listdir(os.path.join(SRC_DIR,folder))
-           f = 1
-           for file in file_list:
-               print('On File %(f)d of %(flen)d.' %
-                      {'f': f, 'flen': len(file_list)})
-               d = get_vid_data(folder,file)
-               df = df.append(d,ignore_index=True)
-               f = f+1
-            
-           df.to_csv(folder+'_dataFrame.txt',index=False)
-    
-        print("Exiting...")
-    except:
-        extype, value, tb = sys.exc_info()
-        traceback.print_exc()
-        pdb.post_mortem(tb) 
-
 
 
 .. py:function:: get_links(user, t):
@@ -86,33 +58,11 @@ Below is an example code of how to run get_vid_data
 Below is an example code of how to use get_links
   
 .. code-block:: python
-   
-   """
-   The following code gets video links for user, type when called on terminal
-   """
-   from scraping.get_videeo_links import get_links
-   from selenium import webdriver
-   from bs4 import BeautifulSoup as bs
-   import time
 
-   
-   SRC_DIR = './data/source_links/'
-   
-   fd = open('scraping/users.txt','r')
-   r = fd.read().splitlines()
-   fd.close()
+   >>>video_list = get_links('chefsteps', 'u')
+   >>>video_list = ['https://www.youtube.com/watch?v=G8FplJ1BJyA', 'https://www.youtube.com/watch?v=LVXWSIjhAOc', 'https://www.youtube.com/watch?v=iNSc2sixyWQ', 'https://www.youtube.com/watch?v=RFA_RptDR4w', 'https://www.youtube.com/watch?v=giA5iA_6qGM', 'https://www.youtube.com/watch?v=NDm7Fo71kow', 'https://www.youtube.com/watch?v=Phtn7C62G0E', 'https://www.youtube.com/watch?v=xkoU3fzXnFg', 'https://www.youtube.com/watch?v=tUCtMYmKjfY', 'https://www.youtube.com/watch?v=KfQqEV6erqM', 'https://www.youtube.com/watch?v=7BMb4FMtvec', 'https://www.youtube.com/watch?v=mCkeZb6tN-c', 'https://www.youtube.com/watch?v=qkwPd8cyXSI', 'https://www.youtube.com/watch?v=jonmvu9yicE', 'https://www.youtube.com/watch?v=NWBdRRW4oCE', 'https://www.youtube.com/watch?v=KPoxKFmNs5E', 'https://www.youtube.com/watch?v=smyFpZQz-50', 'https://www.youtube.com/watch?v=nRHaZoI-Bhc', 'https://www.youtube.com/watch?v=VB_fsszLDvY', 'https://www.youtube.com/watch?v=nk6tzT-m8gQ', 'https://www.youtube.com/watch?v=Tf_eSMpNgh8', 'https://www.youtube.com/watch?v=21xmT4Jc3yM', 'https://www.youtube.com/watch?v=OLMWqoQP2pI', 'https://www.youtube.com/watch?v=4qKASRi7iJs', 'https://www.youtube.com/watch?v=owgPVAHdRpg', 'https://www.youtube.com/watch?v=liRwZsw3cq4', 'https://www.youtube.com/watch?v=eBF5DwJPH00', 'https://www.youtube.com/watch?v=-XGyf5bpOdg', 'https://www.youtube.com/watch?v=P1Ncswxv4QU']
 
-   for item in r:
 
-      user = item.split()[0]
-      t = item.split()[1]
-      g = item.split()[2]
-
-      links = get_links(user, t)
-      fd = open(SRC_DIR+g+'/'+user+'.txt','w+')
-      fd.write('\n'.join(links))
-      fd.close()
-      print("Number of links :", len(links))
 
 
    
